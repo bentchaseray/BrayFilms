@@ -55,11 +55,27 @@ main{padding:16px}
 .chk.done .title{text-decoration:line-through;color:#666}
 .chk.done .sub{color:#444}
 .chk .body{flex:1}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.stat{background:#141414;border:1px solid #1f1f1f;padding:12px;border-radius:10px;text-align:center}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.stat{background:#141414;border:1px solid #1f1f1f;padding:12px;border-radius:12px}
+.stat .label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#888}
+.stat .val{font-size:20px;font-weight:700;color:#f5f5f5;margin-top:2px;line-height:1.1}
+.stat .val.gold{color:#d4af37}
 .stat .num{font-size:20px;font-weight:700;color:#f5f5f5;line-height:1.1}
 .stat .num.gold{color:#d4af37}
 .stat .lbl{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-top:3px}
+.card h3{font-size:11px;font-weight:700;color:#d4af37;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+.mrow{padding:9px 0;border-bottom:1px solid #1f1f1f;font-size:14px}
+.mrow.ex{cursor:pointer}
+.mrow:last-child{border-bottom:none}
+.mrow-head{display:flex;justify-content:space-between;align-items:center}
+.mrow .src{color:#ccc;flex:1}
+.mrow .amt{color:#d4af37;font-weight:600;font-variant-numeric:tabular-nums;margin-left:8px}
+.mrow .chev{color:#555;font-size:14px;flex-shrink:0;margin-left:6px;transition:transform .2s}
+.mrow.ex.open .chev{transform:rotate(90deg)}
+.mrow .ctx{max-height:0;overflow:hidden;transition:max-height .25s ease-out}
+.mrow.ex.open .ctx{max-height:1500px}
+.mrow.total{border-top:1px solid #d4af37;border-bottom:none;margin-top:4px;padding-top:12px;font-weight:700;cursor:default}
+.mrow.total .src,.mrow.total .amt{color:#d4af37;font-size:16px}
 .tagm{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.6px;padding:2px 7px;border-radius:8px;text-transform:uppercase;margin-bottom:5px}
 .tagm.live{background:#d4af37;color:#0a0a0a}
 .tagm.warm{background:#1a1a1a;color:#d4af37;border:1px solid #d4af37}
@@ -322,57 +338,73 @@ function makeMoney(d) {
   const sec = sectionShell("money", "Money", "This Week");
   const m = d.money || {};
 
+  // stat grid (V1.1 uses .label / .val.gold)
   if (m.stats?.length) {
     const grid = document.createElement("div");
     grid.className = "stats";
     grid.innerHTML = m.stats.map(s =>
-      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+      `<div class="stat"><div class="label">${escapeHTML(s.label)}</div><div class="val ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div></div>`
     ).join("");
     sec.appendChild(grid);
   }
 
-  (m.incomeSources || []).forEach(src => {
-    const c = document.createElement("div");
-    c.className = "card ex";
-    c.innerHTML = `
-      <div class="row">
-        <div class="body">
-          <div class="title">${escapeHTML(src.src)} <span class="gold-txt">${escapeHTML(src.amt)}</span></div>
+  // Income Sources — ONE card with mrow rows + total row
+  if ((m.incomeSources || []).length || m.incomeTotal) {
+    const card = document.createElement("div");
+    card.className = "card";
+    let html = `<h3>Income Sources</h3>`;
+    (m.incomeSources || []).forEach(src => {
+      html += `
+        <div class="mrow ex">
+          <div class="mrow-head">
+            <span class="src">${escapeHTML(src.src)}</span>
+            <span class="amt">${escapeHTML(src.amt)}</span>
+            <span class="chev">›</span>
+          </div>
           <div class="ctx"><div class="ctx-inner">${src.ctx || ""}</div></div>
-        </div>
-        <span class="chev">›</span>
-      </div>`;
-    sec.appendChild(c);
-  });
-
-  if (m.incomeTotal) {
-    const t = document.createElement("div");
-    t.className = "card gold-edge";
-    t.innerHTML = `<div class="row"><div class="body"><div class="title">Total Coming In</div><div class="txt gold-txt" style="font-size:18px;font-weight:700;margin-top:3px">${escapeHTML(m.incomeTotal)}</div></div></div>`;
-    sec.appendChild(t);
+        </div>`;
+    });
+    if (m.incomeTotal) {
+      html += `
+        <div class="mrow total">
+          <div class="mrow-head">
+            <span class="src">Total Coming In</span>
+            <span class="amt">${escapeHTML(m.incomeTotal)}</span>
+          </div>
+        </div>`;
+    }
+    card.innerHTML = html;
+    sec.appendChild(card);
   }
 
-  (m.owed || []).forEach(owed => {
-    const c = document.createElement("div");
-    c.className = "card ex";
-    c.innerHTML = `
-      <div class="row">
-        <div class="body">
-          <div class="title">⏳ ${escapeHTML(owed.src)} <span class="gold-txt">${escapeHTML(owed.amt)}</span></div>
+  // Owed / To Collect — ONE card with mrow rows
+  if ((m.owed || []).length) {
+    const card = document.createElement("div");
+    card.className = "card";
+    let html = `<h3>Owed / To Collect</h3>`;
+    (m.owed || []).forEach(owed => {
+      html += `
+        <div class="mrow ex">
+          <div class="mrow-head">
+            <span class="src">${escapeHTML(owed.src)}</span>
+            <span class="amt">${escapeHTML(owed.amt)}</span>
+            <span class="chev">›</span>
+          </div>
           <div class="ctx"><div class="ctx-inner">${owed.ctx || ""}</div></div>
-        </div>
-        <span class="chev">›</span>
-      </div>`;
-    sec.appendChild(c);
-  });
+        </div>`;
+    });
+    card.innerHTML = html;
+    sec.appendChild(card);
+  }
 
+  // Pricing Rules — single card
   if (m.pricing) {
     const p = document.createElement("div");
     p.className = "card ex";
     p.innerHTML = `
       <div class="row">
         <div class="body">
-          <div class="title">💰 Pricing Reference</div>
+          <div class="title">💰 Pricing Rules</div>
           <div class="txt" style="margin-top:3px">${escapeHTML(m.pricing.body)}</div>
           <div class="ctx"><div class="ctx-inner">${m.pricing.ctx || ""}</div></div>
         </div>
