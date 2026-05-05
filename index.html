@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BentleyHQ">
+<meta name="theme-color" content="#0a0a0a">
+<title>BentleyHQ</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#0a0a0a;color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.5;overscroll-behavior:none}
+body{padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(72px + env(safe-area-inset-bottom)) env(safe-area-inset-left);min-height:100vh}
+header{position:sticky;top:0;background:rgba(10,10,10,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px 16px 8px;border-bottom:1px solid #1a1a1a;z-index:100}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.brand h1{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.brand .gold{color:#d4af37}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#888}
+.refresh{background:transparent;border:1px solid #2a2a2a;color:#888;padding:4px 10px;border-radius:14px;font-size:11px;cursor:pointer;font-family:inherit}
+.refresh:active{background:#1a1a1a;color:#d4af37}
+.refresh.spinning{color:#d4af37;border-color:#d4af37}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 0 2px;margin:0 -16px;padding-left:16px;padding-right:16px}
+nav::-webkit-scrollbar{display:none}
+nav a{flex-shrink:0;padding:6px 12px;border-radius:14px;background:#1a1a1a;color:#888;font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap}
+nav a.active{background:#d4af37;color:#0a0a0a}
+main{padding:16px}
+.section{margin-bottom:28px;scroll-margin-top:120px}
+.s-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #1a1a1a}
+.s-head h2{font-size:11px;font-weight:700;color:#d4af37;letter-spacing:1.5px;text-transform:uppercase}
+.s-head .tag{font-size:10px;color:#666;letter-spacing:.5px}
+.card{background:#141414;border:1px solid #1f1f1f;border-radius:12px;padding:14px;margin-bottom:10px;transition:border-color .15s}
+.card.hot{border-color:#d4af37;background:linear-gradient(180deg,#1a1408,#141414)}
+.card.gold-edge{border-left:3px solid #d4af37}
+.row{display:flex;align-items:flex-start;gap:10px}
+.row .icon{flex-shrink:0;font-size:18px;margin-top:1px}
+.row .body{flex:1;min-width:0}
+.title{font-size:14px;font-weight:600;color:#f5f5f5;line-height:1.35;margin-bottom:3px}
+.sub{font-size:12px;color:#999;line-height:1.4}
+.txt{font-size:13px;color:#ccc;line-height:1.5}
+.txt strong{color:#f5f5f5;font-weight:600}
+.dim{font-size:11px;color:#666;margin-top:4px}
+.gold-txt{color:#d4af37}
+.chev{color:#555;font-size:14px;flex-shrink:0;margin-left:6px;transition:transform .2s;align-self:center}
+.ex{cursor:pointer}
+.ex.open .chev{transform:rotate(90deg)}
+.ctx{max-height:0;overflow:hidden;transition:max-height .25s ease-out}
+.ex.open .ctx{max-height:1500px}
+.ctx-inner{padding:12px;background:#0a0a0a;border-radius:8px;margin-top:10px;font-size:12px;color:#aaa;line-height:1.55;border-left:2px solid #d4af37}
+.ctx-inner strong{color:#d4af37;font-weight:600}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;background:#141414;border:1px solid #1f1f1f;border-radius:10px;margin-bottom:8px}
+.chk .box{flex-shrink:0;width:20px;height:20px;border:2px solid #2a2a2a;border-radius:5px;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.chk.done .box{background:#d4af37;border-color:#d4af37}
+.chk.done .box::after{content:"✓";color:#0a0a0a;font-weight:700;font-size:13px}
+.chk.done .title{text-decoration:line-through;color:#666}
+.chk.done .sub{color:#444}
+.chk .body{flex:1}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:#141414;border:1px solid #1f1f1f;padding:12px;border-radius:10px;text-align:center}
+.stat .num{font-size:20px;font-weight:700;color:#f5f5f5;line-height:1.1}
+.stat .num.gold{color:#d4af37}
+.stat .lbl{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-top:3px}
+.tagm{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.6px;padding:2px 7px;border-radius:8px;text-transform:uppercase;margin-bottom:5px}
+.tagm.live{background:#d4af37;color:#0a0a0a}
+.tagm.warm{background:#1a1a1a;color:#d4af37;border:1px solid #d4af37}
+.tagm.draft{background:#1a1a1a;color:#888;border:1px solid #333}
+.tagm.booked{background:#0a3d0a;color:#7fdb7f;border:1px solid #1a5a1a}
+.dm-block{margin-top:8px;padding:10px;background:#0a0a0a;border-radius:8px;border:1px solid #1f1f1f;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#ccc;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.copy-btn{background:transparent;border:1px solid #2a2a2a;color:#888;padding:5px 10px;border-radius:8px;font-size:10px;cursor:pointer;margin-top:8px;font-family:inherit;letter-spacing:.5px;text-transform:uppercase}
+.copy-btn:active{background:#d4af37;color:#0a0a0a;border-color:#d4af37}
+.copy-btn.copied{background:#d4af37;color:#0a0a0a;border-color:#d4af37}
+.banner{background:linear-gradient(135deg,#1a1408,#0a0a0a);border:1px solid #d4af37;padding:14px;border-radius:12px;margin-bottom:18px}
+.banner .lbl{font-size:10px;font-weight:700;color:#d4af37;letter-spacing:1.2px;margin-bottom:6px;text-transform:uppercase}
+.banner .head{font-size:15px;color:#f5f5f5;line-height:1.4;font-weight:500}
+footer{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #1a1a1a;padding:8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);display:grid;grid-template-columns:repeat(4,1fr);gap:4px;z-index:100}
+footer a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;text-decoration:none;border-radius:10px;background:#141414;border:1px solid #1f1f1f;transition:all .15s}
+footer a:active{background:#d4af37}
+footer .ic{font-size:18px;line-height:1}
+footer .lab{font-size:10px;font-weight:600;color:#999;letter-spacing:.3px}
+footer a:active .lab{color:#0a0a0a}
+.empty{text-align:center;padding:40px 20px;color:#555;font-size:13px}
+.err-banner{background:#3d0a0a;border:1px solid #5a1a1a;color:#ffaaaa;padding:10px 14px;border-radius:10px;margin-bottom:14px;font-size:12px;display:none}
+.err-banner.show{display:block}
+.loading{text-align:center;padding:60px 20px;color:#666;font-size:13px}
+@media(min-width:600px){body{max-width:480px;margin:0 auto;border-left:1px solid #1a1a1a;border-right:1px solid #1a1a1a}footer{max-width:480px;left:50%;transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1><span class="gold">⚡</span> BentleyHQ <span class="gold" id="ver"></span></h1>
+    <button class="refresh" id="refreshBtn" onclick="forceRefresh()">↻ Sync</button>
+  </div>
+  <div class="meta">
+    <span id="metaLabel">Loading…</span>
+    <span id="metaDate"></span>
+  </div>
+  <nav id="nav"></nav>
+</header>
+
+<main id="main">
+  <div class="loading" id="loadingState">Loading dashboard…</div>
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+"use strict";
+
+const DATA_URL = "./data.json";
+const KEY_DATA = "bhq.data";
+const KEY_CHECKS = "bhq.checks";
+const KEY_FETCH_TS = "bhq.fetchedAt";
+
+const SECTIONS = [
+  { id: "today", label: "Today" },
+  { id: "week", label: "Week" },
+  { id: "money", label: "Money" },
+  { id: "pipeline", label: "Pipeline" },
+  { id: "content", label: "Content" },
+  { id: "decisions", label: "Decisions" },
+  { id: "goals", label: "Goals" }
+];
+
+// ---------- storage helpers ----------
+function loadChecks() {
+  try { return JSON.parse(localStorage.getItem(KEY_CHECKS) || "{}"); }
+  catch (e) { return {}; }
+}
+function saveChecks(checks) {
+  try { localStorage.setItem(KEY_CHECKS, JSON.stringify(checks)); } catch (e) {}
+}
+function loadCachedData() {
+  try { return JSON.parse(localStorage.getItem(KEY_DATA) || "null"); }
+  catch (e) { return null; }
+}
+function saveCachedData(data) {
+  try {
+    localStorage.setItem(KEY_DATA, JSON.stringify(data));
+    localStorage.setItem(KEY_FETCH_TS, String(Date.now()));
+  } catch (e) {}
+}
+
+// ---------- fetch ----------
+async function fetchData() {
+  const url = DATA_URL + "?t=" + Date.now(); // bust cache
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return await res.json();
+}
+
+async function load() {
+  const cached = loadCachedData();
+  if (cached) render(cached, { fromCache: true });
+
+  try {
+    const fresh = await fetchData();
+    saveCachedData(fresh);
+    render(fresh, { fromCache: false });
+    hideError();
+  } catch (err) {
+    if (!cached) {
+      document.getElementById("loadingState").innerHTML =
+        "Couldn't load data.json.<br><span style='color:#888;font-size:11px'>" +
+        escapeHTML(err.message) + "</span>";
+    } else {
+      showError("Sync failed — showing cached. " + err.message);
+    }
+  }
+}
+
+async function forceRefresh() {
+  const btn = document.getElementById("refreshBtn");
+  btn.classList.add("spinning");
+  btn.textContent = "⟳ ...";
+  try {
+    const fresh = await fetchData();
+    saveCachedData(fresh);
+    render(fresh, { fromCache: false });
+    hideError();
+    btn.textContent = "✓ Synced";
+    setTimeout(() => { btn.textContent = "↻ Sync"; btn.classList.remove("spinning"); }, 1200);
+  } catch (err) {
+    btn.textContent = "✗ Failed";
+    showError("Sync failed: " + err.message);
+    setTimeout(() => { btn.textContent = "↻ Sync"; btn.classList.remove("spinning"); }, 1800);
+  }
+}
+
+function showError(msg) {
+  let el = document.getElementById("errBanner");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "errBanner";
+    el.className = "err-banner";
+    document.getElementById("main").prepend(el);
+  }
+  el.textContent = "⚠ " + msg;
+  el.classList.add("show");
+}
+function hideError() {
+  const el = document.getElementById("errBanner");
+  if (el) el.classList.remove("show");
+}
+
+// ---------- escaping ----------
+function escapeHTML(s) {
+  if (s == null) return "";
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+// ---------- render ----------
+function render(d, opts) {
+  if (!d) return;
+  document.getElementById("ver").textContent = d.meta?.version || "";
+  document.getElementById("metaLabel").textContent = d.meta?.todayLabel || "";
+  const dateEl = document.getElementById("metaDate");
+  let dateText = d.meta?.lastUpdated || "";
+  if (opts && opts.fromCache) dateText += " · cached";
+  dateEl.textContent = dateText;
+
+  document.getElementById("loadingState").remove?.();
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+
+  // banner
+  if (d.focus) {
+    main.appendChild(makeBanner(d.focus));
+  }
+
+  // nav
+  const nav = document.getElementById("nav");
+  nav.innerHTML = SECTIONS.map(s =>
+    `<a href="#${s.id}" data-id="${s.id}">${s.label}</a>`
+  ).join("");
+
+  // sections
+  main.appendChild(makeToday(d));
+  main.appendChild(makeWeek(d));
+  main.appendChild(makeMoney(d));
+  main.appendChild(makePipeline(d));
+  main.appendChild(makeContent(d));
+  main.appendChild(makeDecisions(d));
+  main.appendChild(makeGoals(d));
+
+  // footer
+  renderFooter(d.actions || []);
+
+  bindBehaviors();
+  restoreChecks();
+  setActiveNavOnScroll();
+}
+
+function makeBanner(focus) {
+  const wrap = document.createElement("div");
+  wrap.className = "banner ex";
+  wrap.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+      <div style="flex:1">
+        <div class="lbl">🎯 Today's Focus</div>
+        <div class="head">${escapeHTML(focus.headline || "")}</div>
+      </div>
+      <span class="chev">›</span>
+    </div>
+    <div class="ctx"><div class="ctx-inner">${focus.ctx || ""}</div></div>`;
+  return wrap;
+}
+
+function sectionShell(id, title, tag) {
+  const sec = document.createElement("section");
+  sec.className = "section";
+  sec.id = id;
+  sec.innerHTML = `<div class="s-head"><h2>${escapeHTML(title)}</h2>${tag ? `<span class="tag">${escapeHTML(tag)}</span>` : ""}</div>`;
+  return sec;
+}
+
+// TODAY
+function makeToday(d) {
+  const sec = sectionShell("today", "Today's Checklist", `${(d.checklist||[]).length} items`);
+  (d.checklist || []).forEach(item => {
+    const row = document.createElement("div");
+    row.className = "chk ex";
+    row.dataset.checkId = item.id;
+    row.innerHTML = `
+      <div class="box" data-action="toggle"></div>
+      <div class="body">
+        <div class="title">${escapeHTML(item.text || "")}</div>
+        <div class="sub">${escapeHTML(item.sub || "")}</div>
+        <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+      </div>
+      <span class="chev">›</span>`;
+    sec.appendChild(row);
+  });
+  return sec;
+}
+
+// WEEK
+function makeWeek(d) {
+  const sec = sectionShell("week", "This Week", "May 4–10");
+  (d.week || []).forEach(day => {
+    const c = document.createElement("div");
+    c.className = "card ex" + (day.hot ? " hot" : "");
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(day.day || "")}</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(day.body || "")}</div>
+          <div class="ctx"><div class="ctx-inner">${day.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+  return sec;
+}
+
+// MONEY
+function makeMoney(d) {
+  const sec = sectionShell("money", "Money", "This Week");
+  const m = d.money || {};
+
+  if (m.stats?.length) {
+    const grid = document.createElement("div");
+    grid.className = "stats";
+    grid.innerHTML = m.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(grid);
+  }
+
+  (m.incomeSources || []).forEach(src => {
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(src.src)} <span class="gold-txt">${escapeHTML(src.amt)}</span></div>
+          <div class="ctx"><div class="ctx-inner">${src.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+
+  if (m.incomeTotal) {
+    const t = document.createElement("div");
+    t.className = "card gold-edge";
+    t.innerHTML = `<div class="row"><div class="body"><div class="title">Total Coming In</div><div class="txt gold-txt" style="font-size:18px;font-weight:700;margin-top:3px">${escapeHTML(m.incomeTotal)}</div></div></div>`;
+    sec.appendChild(t);
+  }
+
+  (m.owed || []).forEach(owed => {
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">⏳ ${escapeHTML(owed.src)} <span class="gold-txt">${escapeHTML(owed.amt)}</span></div>
+          <div class="ctx"><div class="ctx-inner">${owed.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+
+  if (m.pricing) {
+    const p = document.createElement("div");
+    p.className = "card ex";
+    p.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">💰 Pricing Reference</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(m.pricing.body)}</div>
+          <div class="ctx"><div class="ctx-inner">${m.pricing.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(p);
+  }
+
+  return sec;
+}
+
+// PIPELINE
+function makePipeline(d) {
+  const p = d.pipeline || {};
+  const total = (p.hot?.length || 0) + (p.active?.length || 0) + (p.drafts?.length || 0);
+  const sec = sectionShell("pipeline", "Pipeline", `${total} active`);
+
+  (p.hot || []).forEach(h => sec.appendChild(makePipelineCard(h, true)));
+  (p.active || []).forEach(a => sec.appendChild(makePipelineCard(a, false)));
+  (p.drafts || []).forEach(dr => sec.appendChild(makeDraftCard(dr)));
+
+  return sec;
+}
+function makePipelineCard(item, hot) {
+  const c = document.createElement("div");
+  c.className = "card ex" + (hot ? " hot" : "");
+  c.innerHTML = `
+    <div class="row">
+      <div class="body">
+        ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+        <div class="title">${escapeHTML(item.title || "")}</div>
+        <div class="sub">${escapeHTML(item.sub || "")}</div>
+        ${item.body ? `<div class="txt" style="margin-top:6px">${escapeHTML(item.body)}</div>` : ""}
+        <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+      </div>
+      <span class="chev">›</span>
+    </div>`;
+  return c;
+}
+function makeDraftCard(item) {
+  const c = document.createElement("div");
+  c.className = "card ex";
+  c.innerHTML = `
+    <div class="row">
+      <div class="body">
+        ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+        <div class="title">${escapeHTML(item.title || "")}</div>
+        <div class="sub">${escapeHTML(item.sub || "")}</div>
+        <div class="ctx">
+          <div class="ctx-inner">
+            <div style="margin-bottom:6px;color:#888;font-size:10px;letter-spacing:.5px;text-transform:uppercase">DM Draft</div>
+            <div class="dm-block" data-dm>${escapeHTML(item.dm || "")}</div>
+            <button class="copy-btn" data-copy>Copy</button>
+          </div>
+        </div>
+      </div>
+      <span class="chev">›</span>
+    </div>`;
+  return c;
+}
+
+// CONTENT
+function makeContent(d) {
+  const c = d.content || {};
+  const sec = sectionShell("content", "Content", "Distribution");
+
+  if (c.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = c.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  if (c.philosophy) {
+    const p = c.philosophy;
+    const card = document.createElement("div");
+    card.className = "card ex gold-edge";
+    card.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(p.title || "")}</div>
+          <div class="sub">${escapeHTML(p.sub || "")}</div>
+          ${p.body ? `<div class="txt" style="margin-top:6px">${escapeHTML(p.body)}</div>` : ""}
+          <div class="ctx"><div class="ctx-inner">${p.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(card);
+  }
+
+  (c.ship || []).forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card ex";
+    card.innerHTML = `
+      <div class="row">
+        <div class="body">
+          ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+          <div class="title">${escapeHTML(item.title || "")}</div>
+          <div class="sub">${escapeHTML(item.sub || "")}</div>
+          <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(card);
+  });
+
+  if (c.floor) {
+    const f = document.createElement("div");
+    f.className = "card ex";
+    f.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">📐 Personal Posting Floor</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(c.floor.body)}</div>
+          <div class="ctx"><div class="ctx-inner">${c.floor.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(f);
+  }
+
+  return sec;
+}
+
+// DECISIONS
+function makeDecisions(d) {
+  const sec = sectionShell("decisions", "Open Decisions", `${(d.decisions||[]).length} pending`);
+  (d.decisions || []).forEach(dec => {
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(dec.title || "")}</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(dec.body || "")}</div>
+          <div class="ctx"><div class="ctx-inner">${dec.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+  return sec;
+}
+
+// GOALS
+function makeGoals(d) {
+  const g = d.goals || {};
+  const sec = sectionShell("goals", "Goals", "");
+  ["now", "mid", "northStar"].forEach(k => {
+    const goal = g[k];
+    if (!goal) return;
+    const c = document.createElement("div");
+    c.className = "card ex" + (k === "northStar" ? " gold-edge" : "");
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(goal.title || "")}</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(goal.body || "")}</div>
+          <div class="ctx"><div class="ctx-inner">${goal.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+  return sec;
+}
+
+// FOOTER
+function renderFooter(actions) {
+  const f = document.getElementById("footer");
+  f.innerHTML = actions.map(a =>
+    `<a href="${escapeHTML(a.url)}" target="_blank" rel="noopener">
+      <span class="ic">${escapeHTML(a.icon)}</span>
+      <span class="lab">${escapeHTML(a.label)}</span>
+    </a>`
+  ).join("");
+}
+
+// ---------- behaviors ----------
+function bindBehaviors() {
+  // expand on tap (ignore links/buttons/checkboxes)
+  document.querySelectorAll(".ex").forEach(el => {
+    el.addEventListener("click", e => {
+      const t = e.target;
+      if (t.tagName === "A" || t.tagName === "BUTTON") return;
+      if (t.dataset.action === "toggle") return;
+      if (t.closest("[data-copy]")) return;
+      if (t.closest(".dm-block")) return;
+      el.classList.toggle("open");
+    });
+  });
+
+  // checkbox toggle
+  document.querySelectorAll('[data-action="toggle"]').forEach(box => {
+    box.addEventListener("click", e => {
+      e.stopPropagation();
+      const row = box.closest(".chk");
+      row.classList.toggle("done");
+      const id = row.dataset.checkId;
+      if (!id) return;
+      const checks = loadChecks();
+      checks[id] = row.classList.contains("done");
+      saveChecks(checks);
+    });
+  });
+
+  // copy buttons for DMs
+  document.querySelectorAll("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", async e => {
+      e.stopPropagation();
+      const block = btn.parentElement.querySelector("[data-dm]");
+      if (!block) return;
+      try {
+        await navigator.clipboard.writeText(block.textContent);
+        btn.classList.add("copied");
+        const orig = btn.textContent;
+        btn.textContent = "✓ Copied";
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove("copied"); }, 1400);
+      } catch (err) {
+        btn.textContent = "Copy failed";
+      }
+    });
+  });
+
+  // smooth scroll nav
+  document.querySelectorAll("nav a").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const id = a.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function restoreChecks() {
+  const checks = loadChecks();
+  document.querySelectorAll(".chk[data-check-id]").forEach(row => {
+    const id = row.dataset.checkId;
+    if (checks[id]) row.classList.add("done");
+  });
+}
+
+function setActiveNavOnScroll() {
+  const links = Array.from(document.querySelectorAll("nav a"));
+  const sections = links.map(a => document.getElementById(a.dataset.id)).filter(Boolean);
+  function update() {
+    const y = window.scrollY + 180;
+    let active = sections[0];
+    for (const s of sections) {
+      if (s.offsetTop <= y) active = s;
+    }
+    links.forEach(a => a.classList.toggle("active", a.dataset.id === active.id));
+  }
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+// kick off
+load();
+</script>
+
+</body>
+</html>
