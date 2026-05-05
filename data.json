@@ -1,91 +1,97 @@
 {
   "meta": {
-    "version": "v2.1",
-    "lastUpdated": "May 4, 2026 · Mon",
-    "todayLabel": "Today · Monday"
+    "version": "v2.2",
+    "lastUpdated": "May 5, 2026 · Tue",
+    "todayLabel": "Today · Tuesday"
   },
   "focus": {
-    "headline": "Finish Harrison 150 edit. Send the 4 cold DMs already drafted. Set up Google Business Profile.",
-    "ctx": "<strong>Why these three:</strong> Harrison 150 ships content to your two biggest assets (@Bray.Films + Explore Harrison). DMs are written, free money sitting on the table. GBP unblocks the Matt Bell review ask, which unblocks credibility for every future pitch. Three highest-leverage moves on the board today."
+    "headline": "Reply to Marcos. Finish Harrison 150. Edit Buffalo BBQ photos. GBP setup.",
+    "ctx": "<strong>Why these four:</strong> Marcos is past warm — he replied. Highest leverage move on the board, all other tasks wait. Harrison 150 has been on the list 2 days, ship it. BBQ photos = $300 sitting on the table. GBP unblocks the Matt Bell review ask which unblocks credibility for every future pitch. Yesterday was a slip — three of four 🔴 items rolled forward. Today is a recovery day."
   },
   "checklist": [
     {
+      "id": "marcos",
+      "text": "Reply to Marcos Oliveira",
+      "sub": "PAST WARM · he replied · highest priority",
+      "ctx": "<strong>Status:</strong> Marcos responded to your email. Bentley says it's past warm now. <strong>Voice rules to use:</strong> state facts don't justify, frame work as a side effect not the ask, exclamation points for warmth, personal-first sign-off. <strong>Pricing:</strong> NOT Entry Package. Destination brand video $1,500–$2,000 OR retainer $1,000–$1,500/mo. Don't pre-quote. Read his reply, gauge appetite, propose accordingly. Lead with Toinette + Explore Harrison anchor."
+    },
+    {
       "id": "h150",
       "text": "Finish Harrison 150 video edit",
-      "sub": "~80% done. Push through.",
-      "ctx": "<strong>What's left:</strong> final color pass, audio cleanup, end-card. <strong>Where it goes:</strong> @Bray.Films feed + Explore Harrison (pending Matt's approval — do NOT ship to EH without his sign-off). <strong>Format:</strong> Reel-ready, vertical, captions burned in."
+      "sub": "Carry-forward · 2nd day on list · ship today",
+      "ctx": "<strong>Slipping.</strong> Was on yesterday's must-do, didn't ship. <strong>What's left:</strong> final color pass, audio cleanup, end-card. <strong>Where it goes:</strong> @Bray.Films feed + Explore Harrison (pending Matt's approval — do NOT ship to EH without his sign-off). <strong>Format:</strong> Reel-ready, vertical, captions burned in. <strong>Wednesday is Josh prep day — get this off the deck before then.</strong>"
+    },
+    {
+      "id": "bbqedit",
+      "text": "Edit Ozark Buffalo BBQ photos",
+      "sub": "Carry-forward · $300 owed on delivery",
+      "ctx": "<strong>Photos, not video.</strong> $300 paying. Today is the right window — no client-facing pressure between now and Wednesday's Josh prep. Personal feed posting opportunity once delivered. Update Notion stage when shipped. Ask for testimonial or social tag at handoff — easiest moment to lock in."
     },
     {
       "id": "gbp",
       "text": "Set up Google Business Profile",
-      "sub": "business.google.com · 10 min · phone verification",
-      "ctx": "<strong>Why:</strong> No GBP = no review link for Matt's review ask, no Maps presence, no SEO foundation, every \"look up Bray Films\" search hits a dead end. <strong>Steps:</strong> business.google.com → search \"Bentley Ray Media\" → claim → verify by phone (instant). <strong>Address:</strong> use service-area mode (you go to clients), not a storefront."
+      "sub": "Carry-forward · 10 min · business.google.com",
+      "ctx": "<strong>3rd day on the list.</strong> 10-minute task that unblocks two things: Matt Bell review ask, and every future Google search of your name. <strong>Steps:</strong> business.google.com → search \"Bentley Ray Media\" → claim → verify by phone (instant). <strong>Address:</strong> use service-area mode (you go to clients), not a storefront. Stop kicking this can."
     },
     {
-      "id": "dms4",
-      "text": "Send 4 drafted cold DMs",
-      "sub": "Luxe on Rush, DeVito's, Shiny Lime, C12 Athletics",
-      "ctx": "<strong>All written.</strong> Copy-paste from the Pipeline section. <strong>Goal:</strong> open a conversation, not close a deal. <strong>Rules:</strong> no links in IG DMs (platform suppresses). Update Notion stage to \"Contacted\" same day. Set follow-up for Day 3 if no response."
+      "id": "dms6",
+      "text": "Send 6 drafted cold DMs",
+      "sub": "Luxe, DeVito's, Shiny Lime, C12, Cliff House, Low Gap",
+      "ctx": "<strong>All six written, copy-paste ready.</strong> Open Pipeline → tap each card → Copy → send. <strong>Goal:</strong> open conversations, not close deals. <strong>Rules:</strong> no links in IG DMs (platform suppresses). Update Notion stage to \"Contacted\" same day. Set Day-3 follow-up if no response. <strong>Use the Outreach page</strong> for full sequence rules."
     },
     {
-      "id": "jasperdms",
-      "text": "Send Cliff House Inn + Low Gap Cafe DMs",
-      "sub": "Both Jasper. Both written.",
-      "ctx": "<strong>Cliff House Inn:</strong> use Toinette referral angle (you literally just met with her at the Chamber). Hits warm, not cold. <strong>Low Gap Cafe:</strong> the move-into-Jasper hook is the unlock. Restaurant that good with no video presence is rare ground."
+      "id": "mbconfirm",
+      "text": "Confirm Matt Bell got May invoice",
+      "sub": "Sent yesterday · should be in his inbox",
+      "ctx": "<strong>Quick text.</strong> 'Hey Matt, just confirming the May invoice landed?' Matt is your active retainer ($500/mo grandfathered). Confirm receipt then circle back on Harrison 150 approval timing. <strong>Don't push for review yet</strong> — GBP needs to be live first, otherwise no link to send."
     },
     {
-      "id": "mbinvoice",
-      "text": "Send Matt Bell May invoice ($500)",
-      "sub": "Active retainer, owed",
-      "ctx": "<strong>Standing retainer.</strong> Matt is grandfathered at $500/mo. Never cite this rate as a benchmark to anyone else. Send invoice via your normal flow. Reminder: GBP needs to be live before you ask him for a Google review."
+      "id": "joshcheck",
+      "text": "Check Josh Pray response status",
+      "sub": "Cell texted Mon · 2 days no reply",
+      "ctx": "<strong>Pre-shoot risk.</strong> Thursday is in 2 days. If Josh hasn't replied to your text by tonight, send a second touch — keep it light: 'Still good for Thursday? Just want to lock in time/meet point.' <strong>Why this matters:</strong> Josh = millions of followers, AR-native. Day-with-Josh is your single biggest portfolio piece this quarter. Don't lose it on a missed text."
     },
     {
-      "id": "joshtext",
-      "text": "Confirm Josh Pray Thursday details",
-      "sub": "FB Messenger left on read · text the cell",
-      "ctx": "<strong>What to confirm:</strong> arrival time, meet point, what he wants to wear, any locations he's down for. <strong>Why this matters:</strong> Josh = millions of followers, AR-native. Day-with-Josh content is your single biggest portfolio piece this quarter and it's tied to Matt Bell's account. Don't lose this on a missed text."
-    },
-    {
-      "id": "bbqedit",
-      "text": "Start Ozark Buffalo BBQ photo edit",
-      "sub": "$300 · queued",
-      "ctx": "<strong>Photos, not video.</strong> $300 paying. Queue after Harrison 150 ships. Personal feed posting opportunity once delivered. Update Notion stage when shipped."
+      "id": "pipeline-stale",
+      "text": "Review pipeline for stale leads",
+      "sub": "Anyone past Day 10 with no response → mark Notion",
+      "ctx": "<strong>Friday Follow-Up agent does this Friday</strong>, but a manual sweep today catches anything the rules missed. Quick scan: any DM you sent before April 25? If no response, mark \"No Response\" in Notion → revisit in 60 days. Don't let dead leads clutter the live pipeline."
     }
   ],
   "week": [
     {
-      "day": "Mon · Today",
-      "body": "Finish Harrison 150 edit. Send DMs. Set up GBP.",
-      "ctx": "High-stakes Monday. Three moves clear the board for a strong Josh Pray week. If you only ship one thing today, ship Harrison 150 — the rest can hit Tuesday morning.",
+      "day": "Mon · Yesterday",
+      "body": "Slipped 3 of 4 must-dos. Invoice sent ✓. Josh texted ✓. BentleyHQ v1.1 built ✓.",
+      "ctx": "What got done: Matt invoice, Josh cell text, BentleyHQ v1.1 (mobile dashboard with grouped Money layout), voice rules locked, Morning Protocol locked. What slipped: Harrison 150, Buffalo BBQ photos, GBP, posting philosophy interview. Three of four must-dos rolled to Tuesday.",
       "hot": false
     },
     {
-      "day": "Tue",
-      "body": "Ozark Buffalo BBQ photo edit. Personal posting plan execution.",
-      "ctx": "No client-facing pressure. Use the breathing room: edit BBQ photos, deliver, queue personal posts from your floor categories (hands/gear/POV/scenery/food/places).",
-      "hot": false
+      "day": "Tue · Today",
+      "body": "Reply to Marcos. Ship Harrison 150. Edit BBQ. GBP. Send remaining DMs.",
+      "ctx": "<strong>Recovery day.</strong> Yesterday's slipped items + Marcos response + DM blast. No client-facing fires between now and Wednesday's Josh prep, so use the breathing room hard. If you only ship one thing today, it's the Marcos reply — past-warm leads cool fast.",
+      "hot": true
     },
     {
       "day": "Wed",
-      "body": "Outreach Drafter runs 8am — review and send. Pre-shoot Josh Pray prep.",
-      "ctx": "<strong>Outreach Drafter:</strong> drops new sequences in Notion, Pitch Angle aware. <strong>Josh prep:</strong> charge all batteries, format SD cards, scout 1-2 specific locations beyond Neighbor's Mill, lock final shot list, confirm Matt is in the loop.",
+      "body": "Outreach Drafter runs 8am · Pre-shoot Josh Pray prep · Confirm logistics",
+      "ctx": "<strong>Outreach Drafter:</strong> drops new sequences in Notion, Pitch Angle aware. <strong>Josh prep:</strong> charge all batteries, format SD cards, scout 1-2 specific locations beyond Neighbor's Mill, lock final shot list, confirm Matt is in the loop. Pre-shoot text to Josh confirming arrival time + meet point.",
       "hot": false
     },
     {
       "day": "Thu · May 7 · Josh Pray Shoot",
-      "body": "Full shoot day. Shot list locked. Major AR creator, millions of followers. Tied to Explore Harrison.",
-      "ctx": "<strong>Shot list:</strong> establishing/downtown morning shots → Neighbor's Mill food + remodel → one outdoor shot if Josh is up for it → 3-5 talking head questions (\"what surprised you about Harrison? what would you tell someone who's never been? what are you coming back for?\") → BTS candids → closing shot to camera (Matt's money clip).",
+      "body": "Full shoot day. Major AR creator, millions of followers. Tied to Explore Harrison.",
+      "ctx": "<strong>Shot list:</strong> establishing/downtown morning shots → Neighbor's Mill food + remodel → one outdoor shot if Josh is up for it → 3-5 talking head questions ('what surprised you about Harrison? what would you tell someone who's never been? what are you coming back for?') → BTS candids → closing shot to camera (Matt's money clip).",
       "hot": true
     },
     {
       "day": "Fri",
-      "body": "Friday Follow-Up runs 8am. Review stale leads. Begin Josh edit.",
+      "body": "Friday Follow-Up runs 8am. Begin Josh edit. Review week.",
       "ctx": "<strong>Friday Follow-Up:</strong> flags stale Notion leads, drafts bumps. Read its output, approve, send. <strong>Josh edit:</strong> first pass on the ride home if you can. Speed beats polish on day-of content; ship a teaser to @Bray.Films within 24 hrs.",
       "hot": false
     },
     {
       "day": "Sat / Sun",
-      "body": "Buffer. Edit Josh Pray content. Personal posting (no client work).",
+      "body": "Buffer. Josh Pray edit. Personal posting (no client work).",
       "ctx": "Protect the buffer. The week kills you if you don't recover. Use one block to edit, one block to post personal, leave actual time off.",
       "hot": false
     }
@@ -98,7 +104,7 @@
     "incomeSources": [
       { "src": "Ozark Buffalo BBQ shoot", "amt": "$300", "ctx": "One-off shoot, photo deliverable. Paid on delivery. Below your Entry Package floor — note this was a relationship/portfolio call, not a pricing precedent." },
       { "src": "Roommate rent + paycheck", "amt": "$1,150", "ctx": "Combined: rent collected from roommate plus this week's ImpacTees paycheck. Stable backbone money." },
-      { "src": "Explore Harrison (Matt Bell)", "amt": "$500", "ctx": "Monthly retainer, grandfathered rate. Invoice SENT today (May 4). Confirm receipt Tuesday." },
+      { "src": "Explore Harrison (Matt Bell)", "amt": "$500", "ctx": "Monthly retainer, grandfathered rate. Invoice SENT Monday May 4. Confirm receipt today." },
       { "src": "Bike shop check", "amt": "$450", "ctx": "Side income from work tied to ImpacTees / bike shop. Not a Bray Films revenue line." }
     ],
     "incomeTotal": "$2,400",
@@ -114,16 +120,16 @@
     "hot": [
       {
         "title": "🔥 Marcos Oliveira / Horseshoe Canyon Ranch",
-        "sub": "Indigo Road Hospitality · Senior Director · Inbound via Toinette",
-        "body": "Email response sent. Pricing: Destination brand video ($1,500–$2,000) or retainer. Lead with Explore Harrison + Toinette. NOT Entry Package.",
-        "ctx": "<strong>Backstory:</strong> You shot at Horseshoe Canyon multiple times under previous ownership. Your photo is still on the ranch website. Indigo Road took over. Toinette connected you to Marcos via email. <strong>Voice rule for the email:</strong> state facts, don't justify them. Frame work as a side effect, not the ask. Personal-first sign-off (\"Bentley Ray\" + phone + website). <strong>Property type:</strong> premium dude ranch / outdoor experience, Ozarks near Jasper. High-value civic/tourism prospect."
+        "sub": "PAST WARM · he replied · response needed today",
+        "body": "Marcos responded to your email. Bentley says it's past warm now. Pricing: Destination brand video ($1,500–$2,000) or retainer. NOT Entry Package. Lead with Toinette + Explore Harrison anchor.",
+        "ctx": "<strong>Backstory:</strong> You shot at Horseshoe Canyon multiple times under previous ownership. Your photo is still on the ranch website. Indigo Road took over. Toinette connected you to Marcos via email. He has now replied. <strong>Voice rules for the response:</strong> state facts don't justify them, frame work as a side effect not the ask, exclamation points for warmth, personal-first sign-off ('Bentley Ray' + phone + website). <strong>Property:</strong> premium dude ranch / outdoor experience, Ozarks near Jasper. High-value civic/tourism prospect."
       }
     ],
     "active": [
-      { "title": "Matt Bell / Explore Harrison", "sub": "Active retainer, $500/mo · invoice sent today", "tag": "live", "tagText": "Live", "ctx": "<strong>Active client.</strong> Grandfathered rate. Harrison 150 video almost done — pending his approval to post on EH. May invoice SENT today. Google review ask blocked until GBP is live. <strong>Long-term play:</strong> EH is your social proof engine for every civic/tourism pitch." },
-      { "title": "Josh Pray", "sub": "Shoot Thu May 7 · texted cell today", "tag": "booked", "tagText": "Booked", "ctx": "<strong>Why this matters:</strong> Josh = major AR content creator with millions of followers. Day-with-Josh content shipped to @Bray.Films + Explore Harrison is the biggest portfolio asset of the quarter. Cell texted today — wait on response, then confirm logistics." },
+      { "title": "Matt Bell / Explore Harrison", "sub": "Active retainer · invoice sent Mon · confirm receipt today", "tag": "live", "tagText": "Live", "ctx": "<strong>Active client.</strong> Grandfathered $500/mo rate. Harrison 150 video almost done — pending his approval to post on EH. May invoice sent yesterday. Google review ask blocked until GBP is live. <strong>Long-term play:</strong> EH is your social proof engine for every civic/tourism pitch." },
+      { "title": "Josh Pray", "sub": "Shoot Thu May 7 · 2 days · cell texted Mon, no reply yet", "tag": "booked", "tagText": "Booked", "ctx": "<strong>Why this matters:</strong> Josh = major AR content creator with millions of followers. Day-with-Josh content shipped to @Bray.Films + Explore Harrison is the biggest portfolio asset of the quarter. <strong>Action today:</strong> if no reply by tonight, send a second light touch confirming Thursday." },
       { "title": "Toinette Madison / Newton County Chamber", "sub": "Call booked · post-Marcos follow-up", "tag": "warm", "tagText": "Warm", "ctx": "<strong>Connected via Matt Bell.</strong> She just connected you to Marcos. <strong>Pitch:</strong> event coverage + destination brand video using Explore Harrison credibility. <strong>NEVER open with Entry Package</strong> — civic/tourism uses civic pricing only. 60–90 day procurement cycle, not a 2-week close." },
-      { "title": "Ozark Buffalo BBQ", "sub": "Shoot done · editing photos · $300", "tag": "live", "tagText": "In Prod", "ctx": "Photos in edit. Deliver this week. Collect $300. Ask for testimonial or tag at handoff. Below Entry Package — relationship/portfolio call, don't repeat the rate publicly." }
+      { "title": "Ozark Buffalo BBQ", "sub": "Shoot done · editing today · $300 owed", "tag": "live", "tagText": "In Prod", "ctx": "Photos in edit. Deliver this week. Collect $300. Ask for testimonial or tag at handoff. Below Entry Package — relationship/portfolio call, don't repeat the rate publicly." }
     ],
     "drafts": [
       { "title": "Luxe on Rush", "sub": "IG DM · ready", "tag": "draft", "tagText": "Send", "dm": "Hey, Bentley Ray here. I do short-form video for local businesses and I pass Luxe on the way through downtown pretty regularly — the visual brand you've built is exactly what films well. Would you be open to a quick conversation about it?" },
@@ -153,24 +159,24 @@
     ],
     "floor": {
       "body": "Hands. Gear. POV. Scenery. Food. Places. Family. Voice-over over b-roll. FB = personal-brand oriented. IG = visual diary, congruent to FB.",
-      "ctx": "<strong>Why it matters:</strong> \"Just start posting on personal\" feels weird because there's no rule for what counts. The floor IS the rule. If a post has hands, gear, POV, scenery, food, a place, family, or voice-over on b-roll — it's eligible. If not, skip it. Removes the daily decision tax."
+      "ctx": "<strong>Why it matters:</strong> 'Just start posting on personal' feels weird because there's no rule for what counts. The floor IS the rule. If a post has hands, gear, POV, scenery, food, a place, family, or voice-over on b-roll — it's eligible. If not, skip it. Removes the daily decision tax."
     }
   },
   "decisions": [
     {
-      "title": "Posting Non-Negotiables (next)",
+      "title": "Marcos Pricing — decide on his reply",
+      "body": "Destination brand video $1,500–$2,000 vs retainer $1,000–$1,500/mo. He responded. Pick a path, then craft the response.",
+      "ctx": "<strong>Don't pre-quote in the reply.</strong> Indigo Road has budget. Read his appetite first: <strong>If exploratory:</strong> propose a single destination brand video as the entry. <strong>If serious about ongoing content:</strong> retainer at the upper end. Always anchor with Explore Harrison and Toinette. Voice rules apply: state facts, frame work as side effect, personal-first sign-off."
+    },
+    {
+      "title": "Posting Non-Negotiables (next interview question)",
       "body": "What MUST hit each feed every week, no exceptions, even on a bad week? Three sub-questions waiting in chat.",
       "ctx": "<strong>My recommended floors:</strong> @Bray.Films IG = 1 Reel + 3 Stories. @Bray.Films FB = 1 cross-post. Personal IG = 1 post OR 3 Stories. Personal FB = 1 post (can be a phone photo with a real caption). <strong>Three sub-questions:</strong> 1) Are these floors too high or too low? 2) What's the ONE piece of content that, if missed, makes the week a failure? 3) Story posting on @Bray.Films — willing to commit to raw phone Stories, or off-brand?"
     },
     {
       "title": "Foundation Setup",
-      "body": "Google Business Profile not live (blocking review asks). Digital business card / link page not built. BentleyHQ now self-updating from chats (this app).",
-      "ctx": "<strong>GBP:</strong> 10 minutes today, unblocks Matt review ask + every future Google search of your name. <strong>Link page:</strong> need a single bray.films/links style page for IG bio (Calendly + portfolio + contact). Currently sending people to scattered places. <strong>BentleyHQ v2:</strong> live data via GitHub. Updates push from this chat."
-    },
-    {
-      "title": "Marcos Pricing",
-      "body": "Destination brand video $1,500–$2,000 vs civic retainer $1,000–$1,500/mo. Decide on his response.",
-      "ctx": "<strong>Don't pre-quote.</strong> Wait for his response, gauge appetite, then price. Indigo Road is a hospitality group — they have budget. <strong>If he's exploratory:</strong> propose a single destination brand video as the entry. <strong>If he's serious about ongoing content:</strong> retainer at the upper end. Always anchor with Explore Harrison and Toinette."
+      "body": "Google Business Profile not live (3rd day on list). Digital business card / link page not built. BentleyHQ v2.2 self-updating from chats.",
+      "ctx": "<strong>GBP:</strong> 10 minutes today, unblocks Matt review ask + every future Google search. <strong>Link page:</strong> need a single bray.films/links style page for IG bio (Calendly + portfolio + contact). <strong>BentleyHQ v2.2:</strong> live data via GitHub. Footer buttons now in-app pages. Updates push from this chat."
     },
     {
       "title": "Nikky Cagle Partnership Terms",
@@ -195,10 +201,138 @@
       "ctx": "<strong>The replacement test:</strong> when Bray Films monthly recurring exceeds your ImpacTees paycheck consistently for 3 months, you have the leverage to reduce ImpacTees hours or fully exit. The math: ~5 retainers averaging $800/mo = $4,000/mo. Achievable in 12 months at current trajectory."
     }
   },
-  "actions": [
-    { "icon": "🎯", "label": "Leads", "url": "https://www.notion.so/1bdc89b1c91f43f89482be156bcd48fd" },
-    { "icon": "🌐", "label": "Tech", "url": "https://www.notion.so/33c50b05c5b18172b678d2ad3caffe5a" },
-    { "icon": "✉️", "label": "Outreach", "url": "https://www.notion.so/33c50b05c5b18185a326f5e8b355436c" },
-    { "icon": "🎬", "label": "Content", "url": "https://www.notion.so/33c50b05c5b1810fa3addf93a3dc2b93" }
-  ]
+  "leadList": {
+    "stats": [
+      { "label": "Hot", "value": "1", "gold": true },
+      { "label": "Total Active", "value": "11", "gold": false }
+    ],
+    "groups": [
+      {
+        "name": "🔥 Hot",
+        "ctx": "<strong>Past warm — replied or booked.</strong> These get response priority above all other pipeline activity.",
+        "leads": [
+          { "name": "Marcos Oliveira / Horseshoe Canyon", "sub": "Replied · response needed today", "tag": "live", "tagText": "Replied", "ctx": "<strong>Indigo Road Hospitality, Senior Director.</strong> Inbound via Toinette Madison. He responded to your email. Voice rules apply: state facts don't justify, frame work as side effect, personal-first sign-off. Pricing: $1,500–$2,000 destination video OR $1,000–$1,500/mo retainer. NOT Entry Package." }
+        ]
+      },
+      {
+        "name": "📞 Call Booked",
+        "ctx": "<strong>Conversation locked in.</strong> Highest priority on follow-through. Update Notion stage same day.",
+        "leads": [
+          { "name": "Toinette Madison / Newton County Chamber", "sub": "Connected via Matt Bell · warm", "tag": "warm", "tagText": "Warm", "ctx": "She connected you to Marcos. Pitch: event coverage + destination brand video using Explore Harrison credibility. <strong>NEVER open with Entry Package.</strong> Civic/tourism = civic pricing only. 60–90 day procurement cycle." }
+        ]
+      },
+      {
+        "name": "🎬 Active / In Production",
+        "ctx": "<strong>Working clients with live deliverables.</strong> Update Notion when stages move.",
+        "leads": [
+          { "name": "Matt Bell / Explore Harrison", "sub": "Retainer · $500/mo grandfathered", "tag": "live", "tagText": "Live", "ctx": "Active retainer. Harrison 150 video pending Matt's approval. May invoice sent Mon. Google review ask blocked until GBP is live. <strong>EH is your social proof engine</strong> for every civic/tourism pitch." },
+          { "name": "Josh Pray", "sub": "Shoot Thu May 7 · day-with-Josh content", "tag": "booked", "tagText": "Booked", "ctx": "Major AR content creator, millions of followers. Tied to Explore Harrison. Cell texted Mon, awaiting reply. If no reply by tonight, second light touch." },
+          { "name": "Ozark Buffalo BBQ", "sub": "Photos in edit · $300 owed", "tag": "live", "tagText": "In Prod", "ctx": "Photos editing today. Deliver this week. Collect $300. Ask for testimonial or tag at handoff." }
+        ]
+      },
+      {
+        "name": "✉️ Drafted, Ready to Send",
+        "ctx": "<strong>All 6 DMs are written.</strong> Copy from the Pipeline page on the home view. Send today, update Notion stage same day, set Day-3 follow-up.",
+        "leads": [
+          { "name": "Luxe on Rush", "sub": "IG DM · downtown HQ", "tag": "draft", "tagText": "Send", "ctx": "Visual brand-led. Strong existing aesthetic. Open with the 'pass on the way through downtown' angle. Hook = visual brand films well." },
+          { "name": "DeVito's Restaurant", "sub": "FB Messenger · fine dining", "tag": "draft", "tagText": "Send", "ctx": "Fine dining gap in Harrison local content space. Hook = restaurant has the look and feel to fill it. FB (not IG) is the right channel for this owner." },
+          { "name": "The Shiny Lime", "sub": "IG DM · Mountain Home", "tag": "draft", "tagText": "Send", "ctx": "Strong IG presence, no video yet. 60-second Reel pitch. Mountain Home market = adjacent territory." },
+          { "name": "C12 Athletics", "sub": "IG DM · indie gym", "tag": "draft", "tagText": "Send", "ctx": "Independent gym positioning angle: 'gyms that tell their story through video separate themselves from chains.' Hook directly aligned to their brand." },
+          { "name": "Cliff House Inn", "sub": "IG/FB · Jasper · Toinette referral", "tag": "draft", "tagText": "Send", "ctx": "Warm via Toinette mention. Scenic 7 + cabins + restaurant — three angles in one venue. Civic/tourism pricing if it goes anywhere." },
+          { "name": "Low Gap Cafe", "sub": "IG DM · Jasper", "tag": "draft", "tagText": "Send", "ctx": "Move into Jasper is the story. Restaurant that good with no video presence is rare ground. Adjacent to Cliff House for territory clustering." }
+        ]
+      },
+      {
+        "name": "🧊 Cold / Stale",
+        "ctx": "<strong>Past Day 10 with no response → mark Notion 'No Response' → revisit in 60 days.</strong> Don't let dead leads clutter the live pipeline.",
+        "leads": [
+          { "name": "(none currently flagged)", "sub": "Run a sweep today", "tag": "draft", "tagText": "—", "ctx": "Manual sweep: any DM sent before April 25 with no response should be marked stale. Friday Follow-Up agent does this Friday automatically — but a manual pass today catches anything that slipped." }
+        ]
+      }
+    ]
+  },
+  "techChecklist": {
+    "stats": [
+      { "label": "Live", "value": "3/8", "gold": true },
+      { "label": "Blocking Revenue", "value": "2", "gold": false }
+    ],
+    "items": [
+      { "name": "Google Business Profile", "sub": "10 min · business.google.com · phone verify", "tag": "draft", "tagText": "BLOCKED", "ctx": "<strong>3rd day on the list.</strong> Blocks: Matt Bell review ask, Maps presence, every Google search of your name. Service-area mode (not storefront). DO IT TODAY." },
+      { "name": "Digital business card / link page", "sub": "bray.films/links style · IG bio target", "tag": "draft", "tagText": "TODO", "ctx": "Single landing page for IG bio. Calendly + portfolio + contact + email. Currently sending people to scattered places. Lower priority than GBP but keeps cold DM conversion friction high." },
+      { "name": "BentleyHQ v2.2", "sub": "Live · GitHub Pages · self-updating", "tag": "live", "tagText": "LIVE", "ctx": "<strong>Shell + data architecture.</strong> Updates push from this chat to GitHub → Pages auto-deploys → Sync button on the app pulls new data. Footer buttons are now in-app pages. Mobile dashboard, dark theme, Add to Home Screen on iPhone." },
+      { "name": "Instagram bio updated", "sub": "Done May 4", "tag": "live", "tagText": "LIVE", "ctx": "Bio carries the local + commercial-video positioning. Once link page is built, swap link in bio to that." },
+      { "name": "Calendly booking link", "sub": "calendly.com/booking-bentleyraymedia", "tag": "live", "tagText": "LIVE", "ctx": "Live and routing. Used in cold email Day-5 CTA. Don't change the URL — already in outbound emails." },
+      { "name": "Bray Films website (full)", "sub": "Beyond link page · portfolio + about", "tag": "draft", "tagText": "TODO", "ctx": "Mid-term build. Link page + portfolio + about + service breakdown. Currently 1 ImpacTees / 1 chamber / 1 personal page = scattered. Consolidate." },
+      { "name": "Notion Lead Tracker hygiene", "sub": "Stages must be current daily", "tag": "live", "tagText": "ACTIVE", "ctx": "<strong>Critical:</strong> Friday Follow-Up agent reads Notion stages. Stale stages = bad agent output. Update same day on every outreach send." },
+      { "name": "Bray.Films FB seeded", "sub": "15+ archived videos waiting", "tag": "draft", "tagText": "PLAN", "ctx": "Drip-post 1 video/week to seed FB history. Cross-post 2 Reels/wk from IG. Don't burn Tuesdays building this — it's a backfill, not new content." }
+    ]
+  },
+  "outreach": {
+    "stats": [
+      { "label": "In-Flight Sequences", "value": "6", "gold": true },
+      { "label": "Day-3 Follow-ups Due", "value": "0", "gold": false }
+    ],
+    "sequence": [
+      { "step": "Day 1 — Instagram DM", "sub": "3–5 sentences · specific hook · one question · no links", "ctx": "<strong>Goal:</strong> start a conversation, not close a deal. <strong>Format:</strong> 'Hey [name], this is Bentley Ray. [Connection or specific observation]. [One low-pressure ask].' No pricing, no pitch, no links (IG suppresses)." },
+      { "step": "Day 3 — Instagram follow-up", "sub": "Only if Day 1 got no response · 1–3 sentences", "ctx": "<strong>Bump + new hook.</strong> Don't repeat Day 1. Add one fresh observation or angle. Stay light. 'Hey, just floating this back up — [new angle]. Open to a quick chat?'" },
+      { "step": "Day 5 — Cold email", "sub": "Switch channels · Calendly OR reply CTA · mention Entry Package", "ctx": "<strong>If still no response, switch to email.</strong> Mention Entry Package ($500 Brand Spotlight + 30-day content consult). One CTA: Calendly link OR reply. Email subject: short, specific, local angle." },
+      { "step": "Day 10 — Final email", "sub": "Close the loop · mild urgency · door open", "ctx": "Last touch. 'Don't want to keep filling your inbox — if it's not the right time, totally get it. Door's always open.' Mild scarcity (booking up Q2/Q3). After this, mark Notion 'No Response' → 60-day revisit." },
+      { "step": "After Day 10", "sub": "Mark Notion · revisit in 60 days", "ctx": "<strong>Don't keep poking.</strong> Move on. Add to 60-day revisit list. Friday Follow-Up agent surfaces these when the window reopens." }
+    ],
+    "voice": [
+      { "rule": "State facts, don't justify them", "body": "'I've shot at Horseshoe Canyon multiple times' beats 'I shot at Horseshoe Canyon under previous ownership.' Don't pre-explain complications. Trust the reader.", "ctx": "Letting facts stand without qualification reads confident. Pre-explaining reads anxious. Reader will ask if they care." },
+      { "rule": "Frame work as a side effect, not the ask", "body": "'Possibly grab some footage while I'm at it' beats 'I'd love it to be on the production side.' Relationship is the primary ask, work is a maybe.", "ctx": "Especially for warm intros and prior-relationship contacts. Even when the whole point is the work." },
+      { "rule": "Exclamation points for warmth, not enthusiasm", "body": "'Looking forward to meeting you!' / 'if that's easier on your end!' These humanize the message — they're how you actually talk.", "ctx": "Not sales-y. Not corporate. They sound like a real human who's looking forward to meeting another human." },
+      { "rule": "Personal-first sign-off when history exists", "body": "'Bentley Ray' + phone + website is enough when there's any prior connection. Add 'Bray Films / Bentley Ray Media' only when the recipient needs a business identity to attach to.", "ctx": "Cold prospect with no context = full business sign-off. Anyone with prior relationship or warm intro = personal sign-off. Mismatch reads weird." },
+      { "rule": "'Looking forward to meeting you' beats 'looking forward to talking'", "body": "Personal language about the human, not the activity.", "ctx": "Same for 'if that's easier on your end' vs 'if that's easier.' Always pull the language toward the person, away from the transaction." }
+    ],
+    "pitchAngles": [
+      { "angle": "BVC — Brand Visibility Checklist", "body": "Commercial businesses. Open with 'are you showing up visually online?' Audit-style hook.", "ctx": "Default for new commercial prospects. Frames you as someone who's already analyzed their digital presence. Pairs naturally with the Entry Package $500 close." },
+      { "angle": "Explore Harrison credibility", "body": "Civic/tourism orgs. Lead with Matt Bell + community impact, not pricing.", "ctx": "Chambers, CVBs, tourism orgs have budget line items. They pay for proven community work, not Brand Spotlights. Anchor every conversation with EH first, pricing second." },
+      { "angle": "Both", "body": "Tourism-adjacent commercial (lodging, outfitters, restaurants near scenic areas). Either hook works.", "ctx": "Cliff House Inn fits this. Low Gap Cafe fits this. Pick the angle based on whether they self-identify as 'business' or 'destination.'" }
+    ],
+    "inFlight": [
+      { "name": "Marcos Oliveira", "stage": "REPLIED", "ctx": "Past warm. Response needed today. NOT Entry Package — civic pricing." },
+      { "name": "Toinette Madison", "stage": "Call Booked", "ctx": "Connected you to Marcos. Civic pricing only." },
+      { "name": "Luxe on Rush", "stage": "DM drafted, NOT sent", "ctx": "Day 1 ready. Send today." },
+      { "name": "DeVito's", "stage": "DM drafted, NOT sent", "ctx": "FB Messenger channel. Day 1 ready." },
+      { "name": "Shiny Lime", "stage": "DM drafted, NOT sent", "ctx": "IG DM ready. Mountain Home." },
+      { "name": "C12 Athletics", "stage": "DM drafted, NOT sent", "ctx": "IG DM ready." },
+      { "name": "Cliff House Inn", "stage": "DM drafted, NOT sent", "ctx": "Toinette referral. IG/FB." },
+      { "name": "Low Gap Cafe", "stage": "DM drafted, NOT sent", "ctx": "IG DM ready. Jasper." }
+    ]
+  },
+  "contentPlanner": {
+    "stats": [
+      { "label": "@Bray.Films IG Cadence", "value": "2/wk", "gold": true },
+      { "label": "FB Backlog", "value": "15+", "gold": false }
+    ],
+    "cadence": [
+      { "feed": "@Bray.Films IG", "freq": "2 Reels/wk → 3 once warmed", "ctx": "<strong>Locked.</strong> Plus Trial Reels for testing new styles to non-followers first. Cross-post Reels to FB automatically." },
+      { "feed": "@Bray.Films FB", "freq": "1 long-form/wk + cross-post Reels", "ctx": "FB is empty. Long-form drip = 15+ archived videos seeding 3+ months of history. Cross-post Reels for free volume." },
+      { "feed": "Personal IG", "freq": "1/wk curated", "ctx": "Visual diary. Floor categories only (hands/gear/POV/scenery/food/places/family/voice-over). Stays congruent to FB." },
+      { "feed": "Personal FB", "freq": "1/wk personal-brand", "ctx": "Personal-brand oriented, not Bray Films. Real captions, phone photos OK. Builds the human side that converts cold DMs faster." }
+    ],
+    "floorCats": [
+      { "cat": "Hands", "body": "Working hands, holding gear, on a shutter, signing a contract, packing a bag." },
+      { "cat": "Gear", "body": "Camera bodies, lenses, drones, lights, audio. Setup shots." },
+      { "cat": "POV", "body": "Through-the-lens or behind-the-camera angles. Ground-level, eye-level, drone." },
+      { "cat": "Scenery", "body": "Ozarks, Scenic 7, Buffalo River, Harrison downtown, sunset/sunrise on location." },
+      { "cat": "Food", "body": "Plates from shoots (Neighbor's Mill, Buffalo BBQ, Low Gap), close-ups, kitchen action." },
+      { "cat": "Places", "body": "Storefronts, interiors, cabins, ranches, gym floors. The literal locations of your work." },
+      { "cat": "Family", "body": "Roommate, friends in frame, real moments around the work. Personal feed only." },
+      { "cat": "Voice-over over b-roll", "body": "Bentley narration over silent footage. Replaces on-camera until traction. Lets you talk without showing your face." }
+    ],
+    "thisWeek": [
+      { "title": "Harrison 150 — @Bray.Films IG Reel", "status": "Edit · ship today", "ctx": "Vertical Reel, captions burned in. Hits @Bray.Films first. Pending Matt's approval before EH cross-post." },
+      { "title": "Buffalo BBQ photos — Personal IG/FB", "status": "After delivery this week", "ctx": "Behind-the-scenes of a real local job. Food + place + hands shots. Stays inside no-face floor." },
+      { "title": "Josh Pray teaser — @Bray.Films IG Reel", "status": "Fri/Sat post-shoot", "ctx": "First-pass edit on the ride home Thursday if energy holds. Speed beats polish on day-of content." },
+      { "title": "FB long-form drip", "status": "Pick 1 archived video, queue Sun", "ctx": "First entry in the 15+ archive drip. Doesn't burn Tuesday. Just queue it." }
+    ],
+    "backlog": [
+      { "title": "15+ archived FB videos awaiting drip", "ctx": "Big unlock for FB seeding. 1/wk = 3+ months of history without new shoots." },
+      { "title": "Trial Reels test queue", "ctx": "Any new style/angle goes here first. Tests to non-followers for 24h before risking the main feed." },
+      { "title": "Rodeo throwback content", "ctx": "Occasional only. Keep majority of feed as new local commercial work." }
+    ]
+  }
 }
