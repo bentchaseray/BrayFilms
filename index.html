@@ -94,6 +94,20 @@ footer a:active{background:#d4af37}
 footer .ic{font-size:18px;line-height:1}
 footer .lab{font-size:10px;font-weight:600;color:#999;letter-spacing:.3px}
 footer a:active .lab{color:#0a0a0a}
+footer button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:1px solid #1f1f1f;border-radius:10px;background:#141414;cursor:pointer;font-family:inherit;transition:all .15s}
+footer button:active{background:#d4af37}
+footer button.active{background:#d4af37;border-color:#d4af37}
+footer button.active .lab,footer button.active .ic{color:#0a0a0a}
+footer button .ic{font-size:18px;line-height:1}
+footer button .lab{font-size:10px;font-weight:600;color:#999;letter-spacing:.3px}
+.page-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1a1a1a}
+.back-btn{background:transparent;border:1px solid #2a2a2a;color:#d4af37;padding:6px 12px;border-radius:14px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600}
+.back-btn:active{background:#d4af37;color:#0a0a0a}
+.page-title{font-size:13px;font-weight:700;color:#d4af37;letter-spacing:1.2px;text-transform:uppercase;flex:1}
+.group-head{font-size:11px;font-weight:700;color:#d4af37;letter-spacing:1.2px;text-transform:uppercase;margin:20px 0 6px}
+.group-head:first-child{margin-top:8px}
+.group-ctx{font-size:11px;color:#888;margin-bottom:10px;line-height:1.5}
+.group-ctx strong{color:#d4af37}
 .empty{text-align:center;padding:40px 20px;color:#555;font-size:13px}
 .err-banner{background:#3d0a0a;border:1px solid #5a1a1a;color:#ffaaaa;padding:10px 14px;border-radius:10px;margin-bottom:14px;font-size:12px;display:none}
 .err-banner.show{display:block}
@@ -138,6 +152,16 @@ const SECTIONS = [
   { id: "decisions", label: "Decisions" },
   { id: "goals", label: "Goals" }
 ];
+
+const VIEWS = [
+  { id: "leadList",       label: "Leads",    icon: "🎯" },
+  { id: "techChecklist",  label: "Tech",     icon: "⚙️" },
+  { id: "outreach",       label: "Outreach", icon: "✉️" },
+  { id: "contentPlanner", label: "Content+", icon: "📅" }
+];
+
+let currentView = "home";
+let lastData = null;
 
 // ---------- storage helpers ----------
 function loadChecks() {
@@ -231,6 +255,7 @@ function escapeHTML(s) {
 // ---------- render ----------
 function render(d, opts) {
   if (!d) return;
+  lastData = d;
   document.getElementById("ver").textContent = d.meta?.version || "";
   document.getElementById("metaLabel").textContent = d.meta?.todayLabel || "";
   const dateEl = document.getElementById("metaDate");
@@ -238,36 +263,63 @@ function render(d, opts) {
   if (opts && opts.fromCache) dateText += " · cached";
   dateEl.textContent = dateText;
 
-  document.getElementById("loadingState").remove?.();
+  document.getElementById("loadingState")?.remove?.();
   const main = document.getElementById("main");
   main.innerHTML = "";
 
-  // banner
-  if (d.focus) {
-    main.appendChild(makeBanner(d.focus));
+  const nav = document.getElementById("nav");
+
+  if (currentView === "home") {
+    // banner
+    if (d.focus) {
+      main.appendChild(makeBanner(d.focus));
+    }
+    // nav (section quick-links)
+    nav.style.display = "";
+    nav.innerHTML = SECTIONS.map(s =>
+      `<a href="#${s.id}" data-id="${s.id}">${s.label}</a>`
+    ).join("");
+    // sections
+    main.appendChild(makeToday(d));
+    main.appendChild(makeWeek(d));
+    main.appendChild(makeMoney(d));
+    main.appendChild(makePipeline(d));
+    main.appendChild(makeContent(d));
+    main.appendChild(makeDecisions(d));
+    main.appendChild(makeGoals(d));
+  } else {
+    // Page view — hide section nav, render only this page
+    nav.style.display = "none";
+    nav.innerHTML = "";
+    const pageView = VIEWS.find(v => v.id === currentView);
+    main.appendChild(makePageHead(pageView));
+    if (currentView === "leadList")       main.appendChild(makeLeadList(d));
+    if (currentView === "techChecklist")  main.appendChild(makeTechChecklist(d));
+    if (currentView === "outreach")       main.appendChild(makeOutreachPage(d));
+    if (currentView === "contentPlanner") main.appendChild(makeContentPlanner(d));
   }
 
-  // nav
-  const nav = document.getElementById("nav");
-  nav.innerHTML = SECTIONS.map(s =>
-    `<a href="#${s.id}" data-id="${s.id}">${s.label}</a>`
-  ).join("");
-
-  // sections
-  main.appendChild(makeToday(d));
-  main.appendChild(makeWeek(d));
-  main.appendChild(makeMoney(d));
-  main.appendChild(makePipeline(d));
-  main.appendChild(makeContent(d));
-  main.appendChild(makeDecisions(d));
-  main.appendChild(makeGoals(d));
-
-  // footer
-  renderFooter(d.actions || []);
+  // footer (always page-switcher)
+  renderFooter();
 
   bindBehaviors();
   restoreChecks();
-  setActiveNavOnScroll();
+  if (currentView === "home") setActiveNavOnScroll();
+}
+
+function switchView(id) {
+  currentView = id;
+  if (lastData) render(lastData, { fromCache: false });
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function makePageHead(view) {
+  const wrap = document.createElement("div");
+  wrap.className = "page-head";
+  wrap.innerHTML = `
+    <button class="back-btn" onclick="switchView('home')">‹ Home</button>
+    <span class="page-title">${escapeHTML(view.icon)} ${escapeHTML(view.label)}</span>`;
+  return wrap;
 }
 
 function makeBanner(focus) {
@@ -574,15 +626,334 @@ function makeGoals(d) {
   return sec;
 }
 
-// FOOTER
-function renderFooter(actions) {
+// FOOTER — page switcher
+function renderFooter() {
   const f = document.getElementById("footer");
-  f.innerHTML = actions.map(a =>
-    `<a href="${escapeHTML(a.url)}" target="_blank" rel="noopener">
-      <span class="ic">${escapeHTML(a.icon)}</span>
-      <span class="lab">${escapeHTML(a.label)}</span>
-    </a>`
+  f.innerHTML = VIEWS.map(v =>
+    `<button type="button" class="${currentView === v.id ? "active" : ""}" data-view="${escapeHTML(v.id)}">
+      <span class="ic">${escapeHTML(v.icon)}</span>
+      <span class="lab">${escapeHTML(v.label)}</span>
+    </button>`
   ).join("");
+  f.querySelectorAll("button[data-view]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.view;
+      switchView(currentView === id ? "home" : id);
+    });
+  });
+}
+
+// ---------- Page: Lead List ----------
+function makeLeadList(d) {
+  const ll = d.leadList || {};
+  const sec = sectionShell("leadList", "Lead Tracker", `${(ll.stats?.[0]?.value) || ""}`);
+
+  if (ll.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = ll.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  (ll.groups || []).forEach(group => {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = group.name || "";
+    sec.appendChild(head);
+
+    if (group.ctx) {
+      const ctx = document.createElement("div");
+      ctx.className = "group-ctx";
+      ctx.innerHTML = group.ctx;
+      sec.appendChild(ctx);
+    }
+
+    (group.leads || []).forEach(lead => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            ${lead.tag ? `<span class="tagm ${escapeHTML(lead.tag)}">${escapeHTML(lead.tagText || lead.tag)}</span>` : ""}
+            <div class="title">${escapeHTML(lead.name || "")}</div>
+            <div class="sub">${escapeHTML(lead.sub || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${lead.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  });
+
+  if (!(ll.groups || []).length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No leads in tracker yet.";
+    sec.appendChild(empty);
+  }
+
+  return sec;
+}
+
+// ---------- Page: Tech Checklist ----------
+function makeTechChecklist(d) {
+  const tc = d.techChecklist || {};
+  const sec = sectionShell("techChecklist", "Tech Stack", `${(tc.stats?.[0]?.value) || ""}`);
+
+  if (tc.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = tc.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  (tc.items || []).forEach(item => {
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+          <div class="title">${escapeHTML(item.name || "")}</div>
+          <div class="sub">${escapeHTML(item.sub || "")}</div>
+          <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  });
+
+  if (!(tc.items || []).length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No tech items.";
+    sec.appendChild(empty);
+  }
+
+  return sec;
+}
+
+// ---------- Page: Outreach ----------
+function makeOutreachPage(d) {
+  const o = d.outreach || {};
+  const sec = sectionShell("outreach", "Outreach Playbook", `${(o.stats?.[0]?.value) || ""}`);
+
+  if (o.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = o.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  // Sequence (Day 1 → Day 10)
+  if ((o.sequence || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📅 Sequence";
+    sec.appendChild(head);
+
+    (o.sequence || []).forEach(step => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(step.day || "")}</div>
+            <div class="sub">${escapeHTML(step.action || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${step.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // Voice rules
+  if ((o.voice || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🎙️ Voice Rules";
+    sec.appendChild(head);
+
+    (o.voice || []).forEach(rule => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(rule.rule || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${rule.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // Pitch angles
+  if ((o.pitchAngles || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🎯 Pitch Angles";
+    sec.appendChild(head);
+
+    (o.pitchAngles || []).forEach(angle => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(angle.name || "")}</div>
+            <div class="sub">${escapeHTML(angle.use || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${angle.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // In flight
+  if ((o.inFlight || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "✈️ In Flight";
+    sec.appendChild(head);
+
+    (o.inFlight || []).forEach(item => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+            <div class="title">${escapeHTML(item.name || "")}</div>
+            <div class="sub">${escapeHTML(item.stage || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  return sec;
+}
+
+// ---------- Page: Content Planner ----------
+function makeContentPlanner(d) {
+  const cp = d.contentPlanner || {};
+  const sec = sectionShell("contentPlanner", "Content Planner", `${(cp.stats?.[0]?.value) || ""}`);
+
+  if (cp.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = cp.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  // Cadence
+  if ((cp.cadence || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📡 Posting Cadence";
+    sec.appendChild(head);
+
+    (cp.cadence || []).forEach(feed => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(feed.feed || "")}</div>
+            <div class="sub">${escapeHTML(feed.target || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${feed.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // Floor categories
+  if ((cp.floorCats || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🧱 Floor Categories";
+    sec.appendChild(head);
+
+    (cp.floorCats || []).forEach(cat => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(cat.cat || "")}</div>
+            <div class="sub">${escapeHTML(cat.use || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${cat.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // This week
+  if ((cp.thisWeek || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🗓️ This Week";
+    sec.appendChild(head);
+
+    (cp.thisWeek || []).forEach(item => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            ${item.tag ? `<span class="tagm ${escapeHTML(item.tag)}">${escapeHTML(item.tagText || item.tag)}</span>` : ""}
+            <div class="title">${escapeHTML(item.title || "")}</div>
+            <div class="sub">${escapeHTML(item.sub || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // Backlog
+  if ((cp.backlog || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📥 Backlog";
+    sec.appendChild(head);
+
+    (cp.backlog || []).forEach(item => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(item.title || "")}</div>
+            <div class="sub">${escapeHTML(item.sub || "")}</div>
+            <div class="ctx"><div class="ctx-inner">${item.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  return sec;
 }
 
 // ---------- behaviors ----------
