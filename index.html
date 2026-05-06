@@ -145,6 +145,7 @@ const KEY_FETCH_TS = "bhq.fetchedAt";
 
 const SECTIONS = [
   { id: "today", label: "Today" },
+  { id: "josh", label: "Josh Prep" },
   { id: "week", label: "Week" },
   { id: "money", label: "Money" },
   { id: "pipeline", label: "Pipeline" },
@@ -281,6 +282,7 @@ function render(d, opts) {
     ).join("");
     // sections
     main.appendChild(makeToday(d));
+    if (d.joshPrep) main.appendChild(makeJoshPrep(d));
     main.appendChild(makeWeek(d));
     main.appendChild(makeMoney(d));
     main.appendChild(makePipeline(d));
@@ -362,6 +364,154 @@ function makeToday(d) {
       <span class="chev">›</span>`;
     sec.appendChild(row);
   });
+  return sec;
+}
+
+// JOSH PREP (temporary section — remove from data.json after Thu May 7 shoot)
+function makeJoshPrep(d) {
+  const j = d.joshPrep;
+  if (!j) return document.createDocumentFragment();
+  const sec = sectionShell("josh", "Josh Pray Prep", j.tag || "Thu May 7");
+
+  if (j.stats?.length) {
+    const g = document.createElement("div");
+    g.className = "stats";
+    g.innerHTML = j.stats.map(s =>
+      `<div class="stat"><div class="num ${s.gold ? "gold" : ""}">${escapeHTML(s.value)}</div><div class="lbl">${escapeHTML(s.label)}</div></div>`
+    ).join("");
+    sec.appendChild(g);
+  }
+
+  if (j.intro) {
+    const c = document.createElement("div");
+    c.className = "card ex hot";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(j.intro.title || "Stakes")}</div>
+          ${j.intro.body ? `<div class="txt" style="margin-top:3px">${escapeHTML(j.intro.body)}</div>` : ""}
+          <div class="ctx"><div class="ctx-inner">${j.intro.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  if ((j.gear || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📦 Gear Checklist";
+    sec.appendChild(head);
+    j.gear.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "chk";
+      if (item.id) row.dataset.checkId = item.id;
+      row.innerHTML = `
+        <div class="box" data-action="toggle"></div>
+        <div class="body">
+          <div class="title">${escapeHTML(item.text || "")}</div>
+        </div>`;
+      sec.appendChild(row);
+    });
+  }
+
+  if ((j.shots || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🎬 Shots to Get";
+    sec.appendChild(head);
+    j.shots.forEach(s => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(s.scene || "")}</div>
+            ${s.body ? `<div class="txt" style="margin-top:3px">${escapeHTML(s.body)}</div>` : ""}
+            <div class="ctx"><div class="ctx-inner">${s.ctx || ""}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  if ((j.questions || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🎤 Questions for Josh";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card ex";
+    const list = j.questions.map(q => `<li style="margin-bottom:6px">${escapeHTML(q)}</li>`).join("");
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">Pick 3-4 · leave room for organic</div>
+          <ol style="margin:8px 0 0 18px;color:#ddd;font-size:13px;line-height:1.6">${list}</ol>
+          <div class="ctx"><div class="ctx-inner">${j.questionsCtx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  if (j.angles) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📐 Angles + Framing";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(j.angles.title || "Camera + story angles")}</div>
+          ${j.angles.body ? `<div class="txt" style="margin-top:3px">${escapeHTML(j.angles.body)}</div>` : ""}
+          <div class="ctx"><div class="ctx-inner">${j.angles.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  if (j.social) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📲 Social Capitalization";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card ex hot";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(j.social.title || "Three feeds, every business tagged")}</div>
+          ${j.social.body ? `<div class="txt" style="margin-top:3px">${escapeHTML(j.social.body)}</div>` : ""}
+          <div class="ctx"><div class="ctx-inner">${j.social.ctx || ""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  if ((j.preshoot || []).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "✅ Pre-Shoot Checklist (tonight)";
+    sec.appendChild(head);
+    j.preshoot.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "chk";
+      if (item.id) row.dataset.checkId = item.id;
+      row.innerHTML = `
+        <div class="box" data-action="toggle"></div>
+        <div class="body">
+          <div class="title">${escapeHTML(item.text || "")}</div>
+        </div>`;
+      sec.appendChild(row);
+    });
+  }
+
   return sec;
 }
 
