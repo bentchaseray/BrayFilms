@@ -144,6 +144,7 @@ const KEY_CHECKS = "bhq.checks";
 const KEY_FETCH_TS = "bhq.fetchedAt";
 
 const SECTIONS = [
+  { id: "marcos", label: "📞 Marcos" },
   { id: "today", label: "Today" },
   { id: "josh", label: "Josh Prep" },
   { id: "week", label: "Week" },
@@ -281,6 +282,7 @@ function render(d, opts) {
       `<a href="#${s.id}" data-id="${s.id}">${s.label}</a>`
     ).join("");
     // sections
+    if (d.marcosCallPrep) main.appendChild(makeMarcosCallPrep(d));
     main.appendChild(makeToday(d));
     if (d.joshPrep) main.appendChild(makeJoshPrep(d));
     main.appendChild(makeWeek(d));
@@ -364,6 +366,167 @@ function makeToday(d) {
       <span class="chev">›</span>`;
     sec.appendChild(row);
   });
+  return sec;
+}
+
+// MARCOS CALL PREP (temporary section — remove from data.json after Fri May 8 call)
+function makeMarcosCallPrep(d) {
+  const m = d.marcosCallPrep;
+  if (!m) return document.createDocumentFragment();
+  const sec = sectionShell("marcos", "📞 Marcos Call Prep", m.tag || "TODAY");
+
+  // Call info card
+  const callCard = document.createElement("div");
+  callCard.className = "card hot";
+  callCard.style.marginBottom = "12px";
+  callCard.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div class="title gold-txt" style="font-size:15px">📞 ${escapeHTML(m.callTime || "")}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <a href="tel:${escapeHTML(m.phone||"")}" style="display:block;text-align:center;padding:9px;background:#1a1408;border:1px solid #d4af37;border-radius:10px;text-decoration:none;color:#d4af37;font-size:12px;font-weight:700;letter-spacing:.4px">📱 ${escapeHTML(m.phone||"")}</a>
+      <a href="mailto:${escapeHTML(m.email||"")}" style="display:block;text-align:center;padding:9px;background:#1a1a1a;border:1px solid #333;border-radius:10px;text-decoration:none;color:#aaa;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHTML(m.email||"")}</a>
+    </div>`;
+  sec.appendChild(callCard);
+
+  // Pre-call checklist
+  if ((m.preCallChecklist||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "✅ Pre-Call Checklist";
+    sec.appendChild(head);
+    m.preCallChecklist.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "chk ex";
+      row.dataset.checkId = item.id;
+      row.innerHTML = `
+        <div class="box" data-action="toggle"></div>
+        <div class="body">
+          <div class="title">${escapeHTML(item.text||"")}</div>
+          <div class="sub">${escapeHTML(item.sub||"")}</div>
+        </div>`;
+      sec.appendChild(row);
+    });
+  }
+
+  // Who he is
+  if (m.whoHeIs) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "👤 Who He Is";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card ex";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title">${escapeHTML(m.whoHeIs.title||"")}</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(m.whoHeIs.body||"")}</div>
+          <div class="ctx"><div class="ctx-inner">${m.whoHeIs.ctx||""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  // Pricing posture
+  if (m.pricingPosture) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "💰 Pricing Posture";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card ex hot";
+    c.innerHTML = `
+      <div class="row">
+        <div class="body">
+          <div class="title gold-txt">${escapeHTML(m.pricingPosture.title||"")}</div>
+          <div class="txt" style="margin-top:3px">${escapeHTML(m.pricingPosture.body||"")}</div>
+          <div class="ctx"><div class="ctx-inner">${m.pricingPosture.ctx||""}</div></div>
+        </div>
+        <span class="chev">›</span>
+      </div>`;
+    sec.appendChild(c);
+  }
+
+  // Discovery questions
+  if ((m.discoveryQuestions||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "❓ 3 Discovery Questions — Ask In Order";
+    sec.appendChild(head);
+    m.discoveryQuestions.forEach(q => {
+      const c = document.createElement("div");
+      c.className = "card ex";
+      c.innerHTML = `
+        <div class="row">
+          <div class="body">
+            <div class="title">${escapeHTML(q.q||"")}</div>
+            <div class="ctx"><div class="ctx-inner">${escapeHTML(q.follow||"")}</div></div>
+          </div>
+          <span class="chev">›</span>
+        </div>`;
+      sec.appendChild(c);
+    });
+  }
+
+  // Things to mention
+  if ((m.toMention||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "💬 Mention Naturally (Don't Force)";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerHTML = m.toMention.map(t =>
+      `<div class="mrow" style="cursor:default"><div class="mrow-head"><span class="src" style="color:#ccc">✓ ${escapeHTML(t)}</span></div></div>`
+    ).join("");
+    sec.appendChild(c);
+  }
+
+  // Do NOT say
+  if ((m.doNotSay||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "🚫 Do NOT Say";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card";
+    c.style.borderColor = "#3d0a0a";
+    c.innerHTML = m.doNotSay.map(t =>
+      `<div class="mrow" style="cursor:default"><div class="mrow-head"><span class="src" style="color:#ff8888">✗ ${escapeHTML(t)}</span></div></div>`
+    ).join("");
+    sec.appendChild(c);
+  }
+
+  // On the call
+  if ((m.onTheCall||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "📞 On The Call";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerHTML = m.onTheCall.map(t =>
+      `<div class="mrow" style="cursor:default"><div class="mrow-head"><span class="src">${escapeHTML(t)}</span></div></div>`
+    ).join("");
+    sec.appendChild(c);
+  }
+
+  // After the call
+  if ((m.afterCall||[]).length) {
+    const head = document.createElement("div");
+    head.className = "group-head";
+    head.textContent = "✅ After The Call";
+    sec.appendChild(head);
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerHTML = m.afterCall.map(t =>
+      `<div class="mrow" style="cursor:default"><div class="mrow-head"><span class="src">${escapeHTML(t)}</span></div></div>`
+    ).join("");
+    sec.appendChild(c);
+  }
+
   return sec;
 }
 
