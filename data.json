@@ -1,67 +1,49 @@
 {
   "meta": {
-    "version": "v2.9",
-    "lastUpdated": "May 8, 2026 \u00b7 Fri PM (v2)",
-    "todayLabel": "Today \u00b7 Friday \u00b7 MARCOS CALL DAY"
+    "version": "v3.1",
+    "lastUpdated": "May 8, 2026 \u00b7 Fri 5pm \u2014 pipeline update",
+    "todayLabel": "Today \u00b7 Friday \u00b7 MARCOS CALL \u2713"
   },
   "focus": {
-    "headline": "\ud83d\udcde Marcos Oliveira / Indigo Road \u2014 3:00pm CT. This is the highest-leverage call you've had. One yes = years of recurring work.",
-    "ctx": "<strong>Indigo Road is a brand-driven hospitality group with budget line items.</strong> Marcos is not a local owner deciding over lunch \u2014 he's a Senior Director with procurement authority. <strong>Your unfair advantage:</strong> your photo is still on the Horseshoe Canyon Ranch website from a prior shoot. That's not a coincidence, that's a talking point. <strong>Goal of this call:</strong> scope, fit, and lock a follow-up in-person walk-through date. Don't quote price unless he asks directly. <strong>Do not pitch the Entry Package.</strong> Anchor is $1,500\u2013$2,000 destination brand video or $1,000\u2013$1,500/mo retainer. <strong>Pick up at 2:58pm CT.</strong> Don't be late on a call with a corporate buyer."
+    "headline": "Marcos call: done. Meeting next week. Keep it warm tonight.",
+    "ctx": "He opened with \"what were you thinking for how we work together.\" The photo on the website landed. The Horseshoe history story landed. He is intrigued by the ranch. He will be in Harrison all next week. One follow-up text tonight. Lock in the day Monday. Do not price yet."
   },
   "checklist": [
     {
-      "id": "fri-mc-site",
-      "text": "Pull up theindigoroad.com \u2014 scan brand voice + property pages",
-      "sub": "Before 3pm CT \u00b7 know their aesthetic before the call",
-      "ctx": "<strong>5 minutes max.</strong> You're looking for: how they describe their properties, what kind of guest they're targeting, and whether Horseshoe fits their standard brand language. Skim The Dewberry, Skyline Lodge, The Bedford pages. This signals you did your homework if any of them come up."
+      "id": "fri-marcos-followup",
+      "text": "Send Marcos follow-up text tonight",
+      "sub": "Short, warm, reference the call \u00b7 confirm next week \u00b7 no pricing",
+      "ctx": "<strong>Do this before 8pm.</strong> He took the call on a Friday afternoon. Acknowledge that. Reference the specific moment from the call \u2014 the Horseshoe history story or his comment about loving the ranch. Confirm you'll lock in a day Monday. Draft is in the Marcos section below."
     },
     {
-      "id": "fri-mc-photo",
-      "text": "Open Horseshoe Canyon Ranch site \u2014 confirm your photo is still there",
-      "sub": "Screenshot it \u00b7 this is your unfair-advantage opener",
-      "ctx": "<strong>Your photo is still on their website.</strong> Screenshot it with your name or credit visible if possible. This is the one detail that separates you from every other video vendor he's ever heard from. State it once, move on. Don't dwell."
-    },
-    {
-      "id": "fri-mc-clips",
-      "text": "Pull 3\u20135 best Horseshoe Canyon clips into a quick-reference folder",
-      "sub": "In case he asks to see work \u00b7 have it ready to screen-share or text",
-      "ctx": "<strong>Don't scramble during or after the call.</strong> Curate your best 3\u20135 clips from prior Horseshoe shoots now. Label the folder so you can AirDrop or text a link on the spot if he asks. Destination feel, guest experience, landscape \u2014 that's the edit lens."
-    },
-    {
-      "id": "fri-mc-reread",
-      "text": "Re-read Marcos call prep doc \u00b7 30 min before the call",
-      "sub": "_marcos_call_prep.md \u00b7 3 questions, pricing posture, do-not-say list",
-      "ctx": "<strong>Lock the three discovery questions in your head.</strong> In order: (1) 12-month vision for Horseshoe, (2) content gaps, (3) what one thing first. His answers become your proposal language. Don't pitch price unless he asks directly."
-    },
-    {
-      "id": "fri-mc-room",
-      "text": "Quiet room, water, notepad, headphones ready by 2:55pm CT",
-      "sub": "Pick up by 3:58pm CT \u00b7 don't be late",
-      "ctx": "<strong>Environment matters.</strong> No background noise, no interruptions. Have a notepad for his exact words \u2014 those phrases become proposal copy. Open with 'Hey Marcos, it's Bentley. Thanks for making time.' Then let him drive the first 60 seconds."
+      "id": "fri-notion-marcos",
+      "text": "Update Marcos in Notion \u2192 stage: Call Booked",
+      "sub": "Log call outcome + notes + next follow-up date: Monday",
+      "ctx": "<strong>Friday Follow-Up agent reads Notion stages.</strong> Stage = Call Booked. Notes: opened with 'what were you thinking,' Horseshoe history landed, intrigued by ranch, meeting next week. Follow Up Date = Mon May 11. Don't leave this blank."
     },
     {
       "id": "fri-bbq",
       "text": "Deliver Ozark Buffalo BBQ photos to Brett",
-      "sub": "$300 owed on delivery \u00b7 don't let this slip another day",
-      "ctx": "<strong>Money sitting in a folder.</strong> Edit is done or nearly done. Text Brett: 'Hey, photos are ready \u2014 sending them over now.' Deliver via Google Drive link or WeTransfer. $300 lands when he has the files. This has been on the list since Tuesday."
+      "sub": "$300 owed on delivery \u00b7 can't let this slip to Monday",
+      "ctx": "<strong>Money in a folder.</strong> Text Brett: 'Hey, photos are ready \u2014 sending them over now.' Deliver via Google Drive or WeTransfer. $300 lands when he has the files. This has been on the list since Tuesday."
     },
     {
       "id": "fri-harrison",
       "text": "Harrison 150 edit \u2192 ship to Matt Bell",
-      "sub": "4+ days on the list \u00b7 escalate \u00b7 $500/mo retainer depends on this",
-      "ctx": "<strong>This is the stale one.</strong> Matt Bell is your anchor client and social proof engine. A 4-day delay on a deliverable erodes that. Ship the edit today with a note: 'Hey Matt, Harrison 150 cut is ready \u2014 let me know what you think.' Even a rough cut with a note beats silence."
+      "sub": "4+ days stale \u00b7 anchor client \u00b7 ship it tonight",
+      "ctx": "<strong>Matt is your credibility anchor for Marcos and every civic pitch you run.</strong> A 4-day delay on a deliverable is the one thing that can quietly erode that. Ship it with a note: 'Hey Matt, Harrison 150 cut is ready \u2014 let me know what you think.' Even rough with a note beats silence."
     },
     {
       "id": "fri-dms",
       "text": "Send the 6 drafted DMs",
       "sub": "Luxe on Rush \u00b7 DeVito's \u00b7 Shiny Lime \u00b7 C12 Athletics \u00b7 Cliff House Inn \u00b7 Low Gap Cafe",
-      "ctx": "<strong>These are copy-paste ready in _session_state.md.</strong> All six. Open Instagram, paste, send. Takes 10 minutes. This is pipeline that doesn't move unless you move it. Don't let drafted outreach sit for days \u2014 the window on 'timely local' always closes."
+      "ctx": "<strong>These are copy-paste ready.</strong> All six. Open Instagram, paste, send. 10 minutes. Pipeline doesn't move unless you move it."
     },
     {
       "id": "fri-gbp",
       "text": "Set up Google Business Profile",
-      "sub": "10 min \u00b7 business.google.com \u00b7 phone verification on the spot \u00b7 unblocks 3 workflows",
-      "ctx": "<strong>This blocks: Matt Bell review ask, Josh Pray rollout credibility, future review chain.</strong> Go to business.google.com, claim Bray Films / Bentley Ray Media, verify via phone call. Takes 10 minutes. Without it, every review ask you send goes nowhere. This is the smallest task with the biggest downstream unlock."
+      "sub": "business.google.com \u00b7 10 min \u00b7 phone verification \u00b7 unlocks review chain",
+      "ctx": "<strong>Marcos now needs to be able to find you and see reviews.</strong> This blocks every review ask going forward. Go to business.google.com, claim Bray Films / Bentley Ray Media, verify via phone. Takes 10 minutes."
     }
   ],
   "joshPrep": {
@@ -293,49 +275,89 @@
   "money": {
     "stats": [
       {
-        "label": "Coming In",
-        "value": "$2,400",
+        "label": "Confirmed Owed",
+        "value": "$750",
         "gold": true
       },
       {
-        "label": "Active Retainer",
-        "value": "$500/mo",
-        "gold": false
+        "label": "Warm Pipeline",
+        "value": "$7,200+",
+        "gold": true
       }
     ],
     "incomeSources": [
       {
-        "src": "Ozark Buffalo BBQ shoot (Brett)",
-        "amt": "$300",
-        "ctx": "One-off shoot, photo deliverable for Brett. Paid on delivery EOD Thu or Fri AM (Brett knows). Below your Entry Package floor, this was a relationship/portfolio call, not a pricing precedent."
-      },
-      {
-        "src": "Roommate rent + paycheck",
-        "amt": "$1,150",
-        "ctx": "Combined: rent collected from roommate plus this week's ImpacTees paycheck. Stable backbone money."
-      },
-      {
-        "src": "Explore Harrison (Matt Bell)",
-        "amt": "$500",
-        "ctx": "Monthly retainer, grandfathered rate. Invoice sent Mon May 4. Confirm receipt today via the same text that flags H150 slipping."
-      },
-      {
         "src": "Bike shop check",
         "amt": "$450",
-        "ctx": "Side income from work tied to ImpacTees / bike shop. Not a Bray Films revenue line."
+        "ctx": "Side income. Not a Bray Films revenue line but it's real money this week."
+      },
+      {
+        "src": "Ozark Buffalo BBQ (Brett)",
+        "amt": "$300",
+        "ctx": "Brett never responded to text. Calling tomorrow. No payment, no video. $300 on delivery."
       }
     ],
-    "incomeTotal": "$2,400",
+    "incomeTotal": "$750",
+    "pipeline": [
+      {
+        "src": "Todd Curry / ImpacTees \u2014 Conway Camp",
+        "amt": "$2,200\u20132,500",
+        "status": "Verbal confirm",
+        "ctx": "June 6\u20137, Conway AR. Two 10-hour days. Photos for Pixieset + promo video for camp. Plus hotel + mileage. Todd said previous photographer at $1,200 was low. Quote $2,200\u20132,500 flat + expenses when he follows up. Ask what the promo video needs to be."
+      },
+      {
+        "src": "Marcos Oliveira / Indigo Road / Horseshoe Canyon",
+        "amt": "$1,500\u20132,000 entry",
+        "status": "Meeting next week",
+        "ctx": "Call went great. He opened the door himself. Meeting in Harrison all next week \u2014 lock in a day Monday. Entry: destination brand video $1,500\u20132,000. Long play: multi-property AR retainer $2,000\u20133,000/mo across 4 AR towns. Borrowing Lane's A7SIII + gimbal for the shoot. Don't price until after the in-person."
+      },
+      {
+        "src": "Toinette Madison / Newton County Chamber",
+        "amt": "$1,500\u20132,000",
+        "status": "Call booked",
+        "ctx": "Civic lead. Event coverage or destination brand video. Explore Harrison is the credibility angle. 60\u201390 day cycle \u2014 don't rush it but don't go quiet. Follow up this week."
+      },
+      {
+        "src": "HPO Detailing",
+        "amt": "$500",
+        "status": "Easy yes",
+        "ctx": "Engaging on content consistently since Bentley started. Owner is warm and primed. Entry Package opener. One DM closes this."
+      },
+      {
+        "src": "Brick Oven",
+        "amt": "$500",
+        "status": "Easy yes",
+        "ctx": "Owner runs in the Explore Harrison / Ray circle. Social proof built in. Entry Package opener. Similar close to HPO \u2014 one conversation."
+      },
+      {
+        "src": "Mason Sullivan / SwingCoast Roofing",
+        "amt": "$500",
+        "status": "Reengage at bike race (June 13)",
+        "ctx": "Just publicly recommended Bray Films. Head salesman / close to owner at Harrison branch. Roofing is a visual business \u2014 crew on the job, before/after, timelapse. Natural Entry Package fit. Plan: reengage in person at Straight Up Gravel June 13."
+      },
+      {
+        "src": "Cary Nabors / Neighbor's Mill",
+        "amt": "$500",
+        "status": "June 14 follow-up",
+        "ctx": "First EH business spotlight Bentley ever shot. Relationship is real. Cary said yes and showed up. Follow up June 14 \u2014 pitch a standalone Brand Spotlight now that EH has documented the restaurant."
+      },
+      {
+        "src": "Ray Ray",
+        "amt": "TBD \u2014 high upside",
+        "status": "Warm \u2014 reignited",
+        "ctx": "Warm lead from last year, reignited this week. If Josh Pray bookings materialize, Ray flies Bentley out as his personal videographer. Value undefined but this is the highest-ceiling lead on the board if it converts."
+      }
+    ],
     "owed": [
       {
-        "src": "Buffalo BBQ on delivery (Brett)",
+        "src": "Brett / Ozark Buffalo BBQ",
         "amt": "$300",
-        "ctx": "Collect on photo handoff EOD Thu or Fri AM. Brett aware of the timing. Edit between Josh shoot wrap and bed if energy holds, otherwise Friday morning. Ask for a quick text testimonial or social tag at delivery."
+        "ctx": "Calling tomorrow. No response to text. No payment, no video. Keep it simple on the call."
       }
     ],
     "pricing": {
       "body": "Entry Package $500 (commercial opener). Brand Spotlight $800. Retainer $600\u2013$1,200/mo. Civic/tourism $1,000\u2013$2,000.",
-      "ctx": "<strong>Rules:</strong> Always lead with Entry Package for new commercial prospects. Civic/tourism uses civic pricing, never Entry Package, chambers and CVBs have budget line items. Matt Bell at $500/mo is grandfathered, never cite as benchmark. Never discount below Entry Package without explicit approval."
+      "ctx": "<strong>Rules:</strong> Always lead with Entry Package for new commercial prospects. Civic/tourism uses civic pricing. Matt Bell at $500/mo is grandfathered \u2014 never cite as benchmark. Never discount below Entry Package without explicit approval."
     }
   },
   "pipeline": {
@@ -1105,6 +1127,30 @@
       "Send a same-day follow-up email \u2014 3 sentences max, confirm next step.",
       "If a proposal is owed: use bray-films-proposal skill that night, ship within 24h.",
       "Brief Toinette Madison \u2014 she made the intro, a 1-sentence update keeps the relationship warm."
-    ]
+    ],
+    "callOutcome": {
+      "status": "CALL COMPLETE \u2713",
+      "result": "Meeting booked for next week",
+      "keyMoments": [
+        "He opened the door himself \u2014 asked 'what were you thinking for how we could work together.' No steering needed.",
+        "Your photo on the Horseshoe website was already in his mind. Instant credibility.",
+        "Horseshoe history story (original bolters, illegal first ascents, landowner development) landed hard. Local knowledge = unfair advantage.",
+        "He said he is 'very intrigued by Horseshoe Canyon and loves everything about it.'",
+        "Will be in Harrison ALL next week. Meeting confirmed."
+      ],
+      "indigoScale": {
+        "restaurants": "48 current + 11 coming",
+        "hotels": "9 hotels including Horseshoe Canyon Ranch",
+        "geography": "Primarily NC, SC, FL \u2014 now 4 AR towns being introduced + Vail CO property",
+        "connections": "Walton family tied in. Significant investor network.",
+        "note": "This is not a one-shoot client. This is a regional content partnership if you nail the first shoot."
+      },
+      "nextAction": "Follow-up text tonight. Lock in specific day/time Monday."
+    },
+    "followUpDraft": {
+      "label": "Tonight's follow-up text",
+      "text": "Marcos, great talking today. The Horseshoe history always gets people \u2014 that place has a story unlike anything else out here. Looking forward to meeting you there next week. I'll reach out Monday to lock in a day and time.",
+      "note": "Send via text to 786.251.6942. Short, warm, moves toward Monday. No pricing, no pitch."
+    }
   }
 }
